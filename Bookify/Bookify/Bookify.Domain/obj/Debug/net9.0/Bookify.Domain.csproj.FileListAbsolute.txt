@@ -1,0 +1,13 @@
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\obj\Debug\net9.0\Bookify.Domain.csproj.AssemblyReference.cache
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\obj\Debug\net9.0\Bookify.Domain.GeneratedMSBuildEditorConfig.editorconfig
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\obj\Debug\net9.0\Bookify.Domain.AssemblyInfoInputs.cache
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\obj\Debug\net9.0\Bookify.Domain.AssemblyInfo.cs
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\obj\Debug\net9.0\Bookify.Domain.csproj.CoreCompileInputs.cache
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\obj\Debug\net9.0\Bookify.Domain.sourcelink.json
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\bin\Debug\net9.0\Bookify.Domain.deps.json
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\bin\Debug\net9.0\Bookify.Domain.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\bin\Debug\net9.0\Bookify.Domain.pdb
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\obj\Debug\net9.0\Bookify.Domain.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\obj\Debug\net9.0\refint\Bookify.Domain.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\obj\Debug\net9.0\Bookify.Domain.pdb
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\Bookify.Domain\obj\Debug\net9.0\ref\Bookify.Domain.dll
