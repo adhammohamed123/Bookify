@@ -12,12 +12,17 @@ jobs:
        - uses: actions/checkout@v6.0.1
 
        - name: Setup .net
-       - uses: actions/setup-dotnet@v5
+         uses: actions/setup-dotnet@v5
          with:
-          dotnet-version: ${{DotNet_Version}}
+            dotnet-version: ${{env.DotNet_Version}}
 
        - name: restore
+         run : dotnet restore Bookify.slnx
        - name : Build 
+         run : dotnet build Bookify.slnx --no-restore --configuration Release
+  
        - name: test
+         run : dotnet test Bookify.slnx --no-restore --no-build --configuration Release 
        - name: publish
+         run : dotnet publish Bookify.slnx --no-restore --no-build --configuration Release --output ./publish
      
