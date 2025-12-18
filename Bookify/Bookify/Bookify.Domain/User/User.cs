@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Bookify.Domain.User
 {
-    public sealed class User : Entity
+    public sealed class UserModel : Entity
     {
-        private User(Guid id,FirstName firstName,LastName lastName,Email email) : base(id)
+        private UserModel(Guid id,FirstName firstName,LastName lastName,Email email) : base(id)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -23,15 +23,22 @@ namespace Bookify.Domain.User
         public LastName LastName { get; private set; }
         public Email Email { get; private set; }
 
-        public static Result<User> CreateNewUser(FirstName firstName,
+        public static Result<UserModel> CreateNewUser(FirstName firstName,
             LastName lastName,
             Email email)
         {
             // add any business rules or validations here
-            var user = new User(Guid.NewGuid(),firstName,lastName, email);
+            var user = new UserModel(Guid.NewGuid(),firstName,lastName, email);
             user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id,user.Email.Value));
-            return Result<User>.Success(user);
+            return Result.Success(user);
         }
     }
-   
+
+    public class UserErrors
+    {
+        public static readonly Error UserNotFound = new(
+            "User.NotFound",
+            "The specified user was not found.");
+    }
+
 }

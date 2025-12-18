@@ -4,7 +4,7 @@ namespace Bookify.Domain.User
 {
     public record Email
     {
-        public static Error InValid =>new Error("Email.Invalid", "Email is not valid.");
+        public static Error InValid =>new("Email.Invalid", "Email is not valid.");
         private Email(string value)
         {
             Value = value;
@@ -12,11 +12,11 @@ namespace Bookify.Domain.User
         public string Value { get; private set; }
         public static Result<Email> Create(string email)
         {
-            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@"))
+            if (string.IsNullOrWhiteSpace(email) || !email.Contains('@'))
             {
-                return Result<Email>.Failure(InValid);
+                return Result.Failure<Email>(InValid);
             }
-            return Result<Email>.Success(new Email(email));
+            return Result.Success(new Email(email));
         }
 
     }

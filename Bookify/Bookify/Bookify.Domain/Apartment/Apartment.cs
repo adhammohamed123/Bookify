@@ -47,7 +47,7 @@ namespace Bookify.Domain.Apartment
             // add any business rules or validations here
             if (amenities == null || amenities.Count==0)
             {
-                return Result<ApartmentModel>.Failure(ApartmentErrors.NoAmenities);
+                return Result.Failure<ApartmentModel>(ApartmentErrors.NoAmenities);
             }
             var apartment = new ApartmentModel(
                 Guid.NewGuid(),
@@ -61,7 +61,7 @@ namespace Bookify.Domain.Apartment
 
             apartment.RaiseDomainEvent(new ApartmentCreatedDomainEvent(apartment.Id));
 
-            return Result<ApartmentModel>.Success(apartment);
+            return Result.Success(apartment);
         }
 
     }

@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace Bookify.Domain.Booking
 {
-    public sealed class Booking : Entity
+    public sealed class BookingModel : Entity
     {
-        private Booking(
+        private BookingModel(
             Guid id,
             Guid userId, 
             Guid apartmentId, 
@@ -55,73 +55,62 @@ namespace Bookify.Domain.Booking
         public DateTime? CanceledAtUtc { get;private set; }
 
 
-        public static Result<Booking> Reserve(Guid userId, ApartmentModel apartment, DateRange duration, DateTime createdAtUtc)
+        public static Result<BookingModel> Reserve(Guid userId, ApartmentModel apartment, DateRange duration, DateTime createdAtUtc)
         {
             var pricingDetails = PricingService.Calc(apartment, duration);
-            var booking= new Booking(Guid.NewGuid(), userId,apartment.Id,duration,pricingDetails.PricePerPeriod,pricingDetails.CleanningFee,pricingDetails.AmenitiesUpCharge,pricingDetails.TotalPrice,createdAtUtc);
-            booking.Status = BookingStatus.Reserved;
+            var booking = new BookingModel(Guid.NewGuid(), userId, apartment.Id, duration, pricingDetails.PricePerPeriod, pricingDetails.CleanningFee, pricingDetails.AmenitiesUpCharge, pricingDetails.TotalPrice, createdAtUtc)
+            {
+                Status = BookingStatus.Reserved
+            };
             apartment.LastBookedOnUtc = createdAtUtc;
             booking.RaiseDomainEvent(new BookingWasCreatedDomainEvent(booking.Id));
            
            return booking;
         }
 
-        public Result<Booking> Confirm(DateTime utcNow)
+        public Result Confirm(DateTime utcNow)
         {
             if (Status != BookingStatus.Reserved)
-                return Result<Booking>.Failure(BookingErrors.NotReserved);
+                return Result.Failure(BookingErrors.NotReserved);
 
             Status= BookingStatus.Confirmed;
             ConfirmedAtUtc = utcNow;
 
             RaiseDomainEvent(new BookingWasConfirmedDomainEvent(Id));
 
-            return Result<Booking>.Success(this);
+            return Result.Success();
         }
-        public Result<Booking> Reject(DateTime utcNow)
+        public Result Reject(DateTime utcNow)
         {
             if (Status != BookingStatus.Reserved)
-                return Result<Booking>.Failure(BookingErrors.NotReserved);
+                return Result.Failure(BookingErrors.NotReserved);
 
             Status = BookingStatus.Reserved;
             RejectedAtUtc = utcNow;
 
             RaiseDomainEvent(new BookingWasRejectedDomainEvent(Id));
 
-            return Result<Booking>.Success(this);
+            return Result.Success();
         }
-
-
-    }
-
-    public static class BookingErrors
-    {
-        public static Error NotReserved => new("Booking.NotReserved", "this booking is no longer be pending");   
-            
-    }
-
-    public record DateRange 
-    {
-        private DateRange(DateOnly start, DateOnly end)
+        public Result Complete(DateTime utcNow)
         {
-            Start = start;
-            End = end;
+            if (Status != BookingStatus.Confirmed)
+                return Result.Failure(BookingErrors.NotConfirmed);
+            Status = BookingStatus.Completed;
+            CompletedAtUtc = utcNow;
+            RaiseDomainEvent(new BookingWasCompletedDomainEvent(Id));
+            return Result.Success();
         }
-
-        public DateOnly Start { get; private set; }
-        public DateOnly End { get; private set; }
-        public int LengthInDays => End.DayNumber - Start.DayNumber;
-
-        private static Error InValid => new("DateRange.InValid", "invalid date range start can not exceed end date");
-
-        public static Result<DateRange> Create(DateOnly start, DateOnly end)
+        public Result Cancel(DateTime utcNow)
         {
-            if(start>end)
-            {
-                return Result<DateRange>.Failure(InValid) ;
-            }
-            return new DateRange(start, end);
+            if (Status != BookingStatus.Confirmed)
+                return Result.Failure(BookingErrors.NotConfirmed);
+            Status = BookingStatus.Canceled;
+            CanceledAtUtc = utcNow;
+            RaiseDomainEvent(new BookingWasCanceledDomainEvent(Id));
+            return Result.Success();
         }
+
     }
 
 }

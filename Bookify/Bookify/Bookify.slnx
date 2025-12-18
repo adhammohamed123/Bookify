@@ -5,6 +5,7 @@
     <File Path="Directory.Packages.props" />
   </Folder>
   <Folder Name="/src/">
+    <Project Path="Bookify.Application/Bookify.Application.csproj" Id="b48ff131-4b70-44c1-ac96-25ee8719618f" />
     <Project Path="Bookify.Domain/Bookify.Domain.csproj" />
   </Folder>
   <Folder Name="/tests/" />
