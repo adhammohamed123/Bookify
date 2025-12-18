@@ -16,7 +16,7 @@ namespace Bookify.Application
             {
                 configuration.RegisterServicesFromAssembly(typeof(DependancyInjection).Assembly);
             });
-
+            services.AddAutoMapper(typeof(DependancyInjection).Assembly);
             return services;
         }
     }

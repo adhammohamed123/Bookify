@@ -1,4 +1,5 @@
-﻿using Bookify.Domain.Abstractions;
+﻿using AutoMapper;
+using Bookify.Domain.Abstractions;
 using Bookify.Domain.Abstractions.Repositories;
 using Bookify.Domain.Apartment;
 using Bookify.Domain.Booking;
@@ -12,9 +13,10 @@ using System.Threading.Tasks;
 
 namespace Bookify.Application.Booking
 {
-    internal abstract class BookingBaseHandler(IRepositoryManager repositoryManager)
+    internal abstract class BookingBaseHandler(IRepositoryManager repositoryManager,IMapper mapper)
     {
         protected readonly IRepositoryManager repositoryManager = repositoryManager;
+        protected readonly IMapper mapper = mapper;
 
         protected async Task<Result<UserModel>> CheckUserExistanceAsync(Guid UserId)
         {

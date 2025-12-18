@@ -96,6 +96,7 @@
           }
         },
         "centralPackageVersions": {
+          "AutoMapper": "14.0.0",
           "MediatR": "12.5.0",
           "MediatR.Contracts": "2.0.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
