@@ -1,4 +1,5 @@
-﻿using Bookify.Application.Abstractions.Messaging;
+﻿using Bookify.Application.Abstractions.Clock;
+using Bookify.Application.Abstractions.Messaging;
 using Bookify.Domain.Abstractions;
 using Bookify.Domain.Abstractions.Repositories;
 using Bookify.Domain.Apartment;
@@ -19,10 +20,12 @@ namespace Bookify.Application.Booking.ReserveBooking
         DateTime EndDateUtc) : ICommand<Guid>;
 
 
-    internal sealed class ReserveBookingCommandHandler(IRepositoryManager repositoryManager) 
+    internal sealed class ReserveBookingCommandHandler(IRepositoryManager repositoryManager,IDateTimeProvider dateTimeProvider) 
         : BookingBaseHandler(repositoryManager), 
         ICommandHandler<ReserveBookingCommand, Guid>
     {
+        private readonly IDateTimeProvider dateTimeProvider = dateTimeProvider;
+
         public async Task<Result<Guid>> Handle(ReserveBookingCommand request, CancellationToken cancellationToken)
         {
             var user = await CheckUserExistanceAsync(request.UserId);
@@ -46,7 +49,7 @@ namespace Bookify.Application.Booking.ReserveBooking
             }
             DateRange dateRange = DateRange.Create(DateOnly.FromDateTime (request.StartDateUtc), DateOnly.FromDateTime (request.EndDateUtc));
 
-            var bookingResult = BookingModel.Reserve(user.Value.Id, apartment,dateRange, DateTime.UtcNow);
+            var bookingResult = BookingModel.Reserve(user.Value.Id, apartment,dateRange, dateTimeProvider.UtcNow);
                
             if (bookingResult.IsFaliure)
             {
