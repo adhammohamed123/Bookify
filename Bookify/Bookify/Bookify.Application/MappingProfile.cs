@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Bookify.Application.Apartment.Dtos;
 using Bookify.Application.Booking.Dtos;
+using Bookify.Domain.Apartment;
 using Bookify.Domain.Booking;
 
 namespace Bookify.Application
@@ -16,6 +18,10 @@ namespace Bookify.Application
             CreateMap<BookingModel, BookingDto>();
                 //.ForMember(d=>d.Duration_Start,r=>r.MapFrom(s=>s.Duration.Start))
                 //.ForMember(d => d.Duration_End, r => r.MapFrom(s => s.Duration.End));
+
+            CreateMap<ApartmentModel, ApartmentDto>()
+                .ForMember(d=>d.Name,r=>r.MapFrom(s=>s.Name.Value))
+                .ForMember(d => d.Description, r => r.MapFrom(s => s.Description.Value));
         }
     }
 }

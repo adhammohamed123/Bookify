@@ -15,6 +15,7 @@ namespace Bookify.Domain.Abstractions.Repositories
     {
         Task<ApartmentModel> GetApartmentAsync(Guid apartmentId, CancellationToken cancellationToken = default);
         Task<IQueryable<ApartmentModel>> GetApartmentsAsync(CancellationToken cancellationToken = default);
+       Task<IQueryable<ApartmentModel>> GetAllApartmentsAvailableInAsync(DateTime startDateUtc, DateTime endDateUtc, CancellationToken cancellationToken = default);
 
     }
     public interface IReviewRepository
