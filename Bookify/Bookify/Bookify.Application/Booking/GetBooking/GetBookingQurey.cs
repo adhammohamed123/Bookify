@@ -14,9 +14,11 @@ namespace Bookify.Application.Booking.GetBooking
     public record GetBookingQurey(Guid Id) : IQuery<BookingDto>;
 
     internal sealed class GetBookingQureyHandler(IRepositoryManager repositoryManager,IMapper mapper)
-        : BookingBaseHandler(repositoryManager,mapper),
+        : BookingBaseHandler(repositoryManager),
         IQueryHandler<GetBookingQurey, BookingDto>
     {
+        private readonly IMapper mapper = mapper;
+
         public async Task<Result<BookingDto>> Handle(GetBookingQurey request, CancellationToken cancellationToken)
         {
             var bookingResult = await CheckBookingExistance(request.Id);

@@ -13,10 +13,10 @@ using System.Threading.Tasks;
 
 namespace Bookify.Application.Booking
 {
-    internal abstract class BookingBaseHandler(IRepositoryManager repositoryManager,IMapper mapper)
+    internal abstract class BookingBaseHandler(IRepositoryManager repositoryManager)
     {
         protected readonly IRepositoryManager repositoryManager = repositoryManager;
-        protected readonly IMapper mapper = mapper;
+        
 
         protected async Task<Result<UserModel>> CheckUserExistanceAsync(Guid UserId)
         {
