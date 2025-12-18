@@ -41,7 +41,6 @@ namespace Bookify.Domain.Apartment
             Address address,
             Money price,
             Money cleanningFee,
-            DateTime? lastBookedOnUtc,
             ICollection<Amenity> amenities)
         {
             // add any business rules or validations here
@@ -56,7 +55,7 @@ namespace Bookify.Domain.Apartment
                 address,
                 price,
                 cleanningFee,
-                lastBookedOnUtc,
+                null,
                 amenities);
 
             apartment.RaiseDomainEvent(new ApartmentCreatedDomainEvent(apartment.Id));
