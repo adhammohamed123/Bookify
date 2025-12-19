@@ -8,39 +8,39 @@ namespace Bookify.Domain.Abstractions.Repositories
 {
     public interface IUserRepository
     {
-        Task<UserModel?> GetUserAsync(Guid userId, CancellationToken cancellationToken = default);
-        Task<IQueryable<UserModel>> GetUsersAsync(CancellationToken cancellationToken = default); 
+        Task<UserModel?> GetUserAsync(Guid userId, bool trackChanges);
+        IQueryable<UserModel> GetUsersAsync(bool trackChanges); 
     }
     public interface IApartmentRepository
     {
-        Task AddNewApartmentAsync(ApartmentModel apartmentModel, CancellationToken cancellationToken = default);
-        Task<ApartmentModel> GetApartmentAsync(Guid apartmentId, CancellationToken cancellationToken = default);
-        Task<IQueryable<ApartmentModel>> GetApartmentsAsync(CancellationToken cancellationToken = default);
-       Task<IQueryable<ApartmentModel>> GetAllApartmentsAvailableInAsync(DateTime startDateUtc, DateTime endDateUtc, CancellationToken cancellationToken = default);
+        Task AddNewApartmentAsync(ApartmentModel apartmentModel);
+        Task<ApartmentModel?> GetApartmentAsync(Guid apartmentId, bool trackChanges);
+        IQueryable<ApartmentModel> GetApartmentsAsync(bool trackChanges);
+       IQueryable<ApartmentModel> GetAllApartmentsAvailableInAsync(DateRange duration, bool trackChanges);
 
     }
     public interface IReviewRepository
     {
-        Task<ReviewModel> GetReviewAsync(Guid reviewId, CancellationToken cancellationToken = default);
-        Task<IQueryable<ReviewModel>> GetReviewsAsync(CancellationToken cancellationToken = default);
+        Task<ReviewModel?> GetReviewAsync(Guid reviewId, bool trackChanges);
+        IQueryable<ReviewModel> GetReviewsAsync(bool trackChanges);
     }
     public interface IBookingRepository
     {
-        Task<BookingModel> GetBookingAsync(Guid bookingId, CancellationToken cancellationToken = default);
-        Task<IQueryable<BookingModel>> GetBookingsAsync(CancellationToken cancellationToken = default);
-        Task<bool> IsOverLappedBooking(Guid apartmentId, DateTime startDateUtc, DateTime endDateUtc, CancellationToken cancellationToken = default);
+        Task<BookingModel?> GetBookingAsync(Guid bookingId, bool trackChanges);
+        IQueryable<BookingModel> GetBookingsAsync(bool trackChanges);
+        Task<bool> IsOverLappedBooking(Guid apartmentId, DateRange duration, CancellationToken cancellationToken = default);
 
-        Task AddBookingAsync(BookingModel booking, CancellationToken cancellationToken = default);
+        Task AddBookingAsync(BookingModel booking);
     }
 
     public interface IBaseRepository<T>
         where T :Entity
     {
-        Task<IQueryable<T>> FindAllAsync (bool trackChanges,CancellationToken cancellationToken);
-        Task<IQueryable<T>> FindByConditionAsync(Expression<Func<T, bool>> expression, bool trackChanges,CancellationToken cancellationToken);
+        IQueryable<T> FindAll (bool trackChanges);
+        IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges);
         Task AddAsync(T entity);
         void Update(T entity);
-        public void Remove(T entity)=> entity.Delete();
+        void Remove(T entity);
     }
   
 

@@ -21,7 +21,7 @@ namespace Bookify.Application.Booking.GetBooking
 
         public async Task<Result<BookingDto>> Handle(GetBookingQurey request, CancellationToken cancellationToken)
         {
-            var bookingResult = await CheckBookingExistance(request.Id);
+            var bookingResult = await CheckBookingExistance(request.Id,track:false);
             if (bookingResult.IsFaliure)
             {
                 return Result.Failure<BookingDto>(bookingResult.Error);

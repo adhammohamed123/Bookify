@@ -1,4 +1,5 @@
 ﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Review;
 using Bookify.Domain.User.Events;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ namespace Bookify.Domain.User
 {
     public sealed class UserModel : Entity
     {
+        private UserModel()
+        {
+        }
         private UserModel(Guid id,FirstName firstName,LastName lastName,Email email) : base(id)
         {
             FirstName = firstName;
@@ -23,6 +27,7 @@ namespace Bookify.Domain.User
         public LastName LastName { get; private set; }
         public Email Email { get; private set; }
 
+        public ICollection<ReviewModel>? Reviews{ get; set; }
         public static Result<UserModel> CreateNewUser(FirstName firstName,
             LastName lastName,
             Email email)

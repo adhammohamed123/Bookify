@@ -1,5 +1,7 @@
 ﻿using Bookify.Domain.Abstractions;
 using Bookify.Domain.Apartment.Events;
+using Bookify.Domain.Booking;
+using Bookify.Domain.Review;
 using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Apartment
@@ -7,7 +9,10 @@ namespace Bookify.Domain.Apartment
     // anemic domain model
     public sealed class ApartmentModel:Entity
     {
-      
+        private ApartmentModel()
+        {
+            
+        }
         private ApartmentModel(
             Guid id,
             Name name, 
@@ -34,7 +39,8 @@ namespace Bookify.Domain.Apartment
         public Money CleanningFee { get; private set; }
         public DateTime? LastBookedOnUtc { get;internal set; }
         public ICollection<Amenity> Amenities { get; private set; } = [];
-
+        public ICollection<BookingModel>? Bookings { get; set; }
+        public ICollection<ReviewModel>? Reviews { get; set; }
         public static Result<ApartmentModel> Create(
             Name name,
             Description description,

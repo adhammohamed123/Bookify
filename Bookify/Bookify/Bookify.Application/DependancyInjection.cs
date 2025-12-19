@@ -1,10 +1,6 @@
 ﻿using Bookify.Application.Abstractions.Behaviors;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bookify.Application
 {
@@ -20,6 +16,7 @@ namespace Bookify.Application
                 configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
             });
             services.AddAutoMapper(typeof(DependancyInjection).Assembly);
+            services.AddValidatorsFromAssembly(typeof(DependancyInjection).Assembly);
             return services;
         }
     }

@@ -18,9 +18,9 @@ namespace Bookify.Application.Booking
         protected readonly IRepositoryManager repositoryManager = repositoryManager;
         
 
-        protected async Task<Result<UserModel>> CheckUserExistanceAsync(Guid UserId)
+        protected async Task<Result<UserModel>> CheckUserExistanceAsync(Guid UserId,bool track)
         {
-            var user = await repositoryManager.UserRepository.GetUserAsync(UserId);
+            var user = await repositoryManager.UserRepository.GetUserAsync(UserId,track);
             if (user is null)
             {
                 return Result.Failure<UserModel>(UserErrors.UserNotFound);
@@ -28,18 +28,18 @@ namespace Bookify.Application.Booking
             return Result.Success(user);
         }
 
-        protected async Task<Result<ApartmentModel>> CheckApartmentExistanceAsync(Guid ApartmentId)
+        protected async Task<Result<ApartmentModel>> CheckApartmentExistanceAsync(Guid ApartmentId,bool track)
         {
-            var apartment = await repositoryManager.ApartmentRepository.GetApartmentAsync(ApartmentId);
+            var apartment = await repositoryManager.ApartmentRepository.GetApartmentAsync(ApartmentId,track);
             if (apartment is null)
             {
                 return Result.Failure<ApartmentModel>(ApartmentErrors.ApartmentNotFound);
             }
             return Result.Success(apartment);
         }
-        protected async Task<Result<BookingModel>> CheckBookingExistance(Guid BookingId)
+        protected async Task<Result<BookingModel>> CheckBookingExistance(Guid BookingId,bool track)
         {
-            var booking = await repositoryManager.BookingRepository.GetBookingAsync(BookingId);
+            var booking = await repositoryManager.BookingRepository.GetBookingAsync(BookingId,track);
             if (booking is null)
             {
                 return Result.Failure<BookingModel>(BookingErrors.BookingNotFound);

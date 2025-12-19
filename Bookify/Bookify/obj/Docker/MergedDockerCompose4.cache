@@ -1,0 +1,92 @@
+name: dockercompose1823981227773156484
+services:
+  bookify.api:
+    build:
+      context: F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify
+      dockerfile: Bookify.Api/Dockerfile
+    depends_on:
+      bookify.postgres:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      ASPNETCORE_HTTPS_PORTS: "8081"
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://bookify.aspire-dashboard:18889
+      OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+    image: bookifyapi
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "5000"
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        published: "5001"
+        protocol: tcp
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\ElDoma\AppData\Roaming/Microsoft/UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\ElDoma\AppData\Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\ElDoma\AppData\Roaming/ASP.NET/Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\ElDoma\AppData\Roaming/ASP.NET/Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+  bookify.aspire-dashboard:
+    environment:
+      DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS: "true"
+    image: mcr.microsoft.com/dotnet/aspire-dashboard:9.3
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 18888
+        published: "18888"
+        protocol: tcp
+  bookify.postgres:
+    environment:
+      POSTGRES_DB: bookifydb
+      POSTGRES_PASSWORD: bookify@123
+      POSTGRES_USER: bookify
+    image: postgres:17
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5432
+        published: "5432"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\.containers\postgres-data\data
+        target: /var/lib/postgresql/data
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose1823981227773156484_default

@@ -3,6 +3,7 @@ using Bookify.Domain.Apartment;
 using Bookify.Domain.Booking.Events;
 using Bookify.Domain.DomainServices;
 using Bookify.Domain.Shared;
+using Bookify.Domain.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,10 @@ namespace Bookify.Domain.Booking
 {
     public sealed class BookingModel : Entity
     {
+        private BookingModel()
+        {
+
+        }
         private BookingModel(
             Guid id,
             Guid userId, 
@@ -54,7 +59,8 @@ namespace Bookify.Domain.Booking
         public DateTime? CompletedAtUtc { get;private set; }
         public DateTime? CanceledAtUtc { get;private set; }
 
-
+        public UserModel? User { get; set; }
+        public ApartmentModel? Apartment { get; set; }
         public static Result<BookingModel> Reserve(Guid userId, ApartmentModel apartment, DateRange duration, DateTime createdAtUtc)
         {
             var pricingDetails = PricingService.Calc(apartment, duration);

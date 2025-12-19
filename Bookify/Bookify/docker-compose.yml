@@ -1,0 +1,32 @@
+services:
+  bookify.api:
+    image: ${DOCKER_REGISTRY-}bookifyapi
+    build:
+      context: .
+      dockerfile: Bookify.Api/Dockerfile
+    ports:
+      - 5000:8080
+      - 5001:8081
+    depends_on: 
+      - bookify.postgres
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://bookify.aspire-dashboard:18889
+      - OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+  
+  bookify.postgres:
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=bookify
+      - POSTGRES_PASSWORD=bookify@123
+      - POSTGRES_DB=bookifydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - .containers/postgres-data/data:/var/lib/postgresql/data
+  
+  bookify.aspire-dashboard:
+    image: mcr.microsoft.com/dotnet/aspire-dashboard:9.3
+    ports:
+      - "18888:18888" 
+    environment:
+      - DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true

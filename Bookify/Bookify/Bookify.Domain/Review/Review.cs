@@ -1,6 +1,8 @@
 ﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Apartment;
 using Bookify.Domain.Booking;
 using Bookify.Domain.Review.Events;
+using Bookify.Domain.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,9 @@ namespace Bookify.Domain.Review
 {
     public sealed class ReviewModel : Entity
     {
+        private ReviewModel()
+        {
+        }
         private ReviewModel(
             Guid id,
             Guid userId, 
@@ -38,8 +43,9 @@ namespace Bookify.Domain.Review
         public Comment Comment { get; private set; }
         public DateTime CreatedAtUtc { get;private set; }
 
-
-
+        public UserModel? User { get; set; }
+        public ApartmentModel? Apartment { get; set; }
+        public BookingModel? Booking { get; set; }
         public static Result<ReviewModel> Create(
             Guid userId,
             Guid apartmentId,

@@ -7,7 +7,7 @@ using Bookify.Domain.Booking;
 
 namespace Bookify.Application.Apartment.SearchApartments
 {
-     public record SearchApartmentsQuery(DateTime start,DateTime end):IQuery<IReadOnlyList<ApartmentDto>>;
+     public record SearchApartmentsQuery(DateTime Start,DateTime End):IQuery<IReadOnlyList<ApartmentDto>>;
    
     internal sealed class SearchApartmentsHandler(IRepositoryManager repositoryManager,IMapper mapper)
         : IQueryHandler<SearchApartmentsQuery, IReadOnlyList<ApartmentDto>>
@@ -18,12 +18,12 @@ namespace Bookify.Application.Apartment.SearchApartments
         public async Task<Result<IReadOnlyList<ApartmentDto>>> Handle(SearchApartmentsQuery request, CancellationToken cancellationToken)
         {
             /// validate start and end date we will use fluent validation in future ,, ==> here we can not validate this because we only validate commands not queries
-            if (request.start >= request.end)
+            if (request.Start >= request.End)
             {
                 return Result.Failure<IReadOnlyList<ApartmentDto>>(DateRange.InValid);
             }
-
-            var apartments = await repositoryManager.ApartmentRepository.GetAllApartmentsAvailableInAsync(request.start, request.end,cancellationToken);
+            var duration = DateRange.Create(DateOnly.FromDateTime(request.Start), DateOnly.FromDateTime(request.End));
+            var apartments =  repositoryManager.ApartmentRepository.GetAllApartmentsAvailableInAsync(duration,false).ToList();
 
            var apartmentDtos= mapper.Map<IReadOnlyList<ApartmentDto>>(apartments);
            return Result.Success(apartmentDtos);

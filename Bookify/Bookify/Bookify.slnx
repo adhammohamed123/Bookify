@@ -5,8 +5,13 @@
     <File Path="Directory.Packages.props" />
   </Folder>
   <Folder Name="/src/">
+    <Project Path="Bookify.Api/Bookify.Api.csproj" Id="9749847c-8fe1-4eb4-a584-bc4b5a503f4d" />
     <Project Path="Bookify.Application/Bookify.Application.csproj" Id="b48ff131-4b70-44c1-ac96-25ee8719618f" />
     <Project Path="Bookify.Domain/Bookify.Domain.csproj" />
+    <Project Path="Bookify.Infrastracture/Bookify.Infrastracture.csproj" Id="c33ae658-e4e3-4de9-a7f8-dd1068ba8098" />
   </Folder>
   <Folder Name="/tests/" />
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
 </Solution>

@@ -32,7 +32,7 @@ namespace Bookify.Application.Apartment.AddApartment
             {
                 return Result.Failure<ApartmentDto>(apartment.Error);
             }
-            await repositoryManager.ApartmentRepository.AddNewApartmentAsync(apartment.Value, cancellationToken);
+            await repositoryManager.ApartmentRepository.AddNewApartmentAsync(apartment.Value);
             await  repositoryManager.SaveChangesAsync(cancellationToken);
             var apartmentDto = mapper.Map<ApartmentDto>(apartment.Value);
             return Result.Success(apartmentDto);
