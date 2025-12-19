@@ -5,3 +5,7 @@
 /.vs
 /Bookify.Domain/obj
 /Bookify/Bookify/.vs
+/Bookify/Bookify/.containers/postgres-data/data
+/Bookify/Bookify/bin/Debug
+/Bookify/Bookify/Bookify.Api/bin/Debug/net9.0
+/Bookify/Bookify/Bookify.Api/obj
