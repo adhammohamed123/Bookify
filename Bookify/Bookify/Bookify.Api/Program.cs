@@ -34,6 +34,7 @@ if (app.Environment.IsDevelopment())
         config.SwaggerEndpoint("/openapi/v1.json", "Bookify Api v1");
     });
     await app.ApplayMigrationAsync();
+    app.AddDamyData();
 }
 
 app.UseHttpsRedirection();

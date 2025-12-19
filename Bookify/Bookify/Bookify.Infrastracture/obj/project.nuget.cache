@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "tXxXzG1p0FM=",
+  "dgSpecHash": "/R1qjGKjHBw=",
   "success": true,
   "projectFilePath": "F:\\GitHub\\Bookify project clean arch & DDD for Github\\Bookify\\Bookify\\Bookify\\Bookify.Infrastracture\\Bookify.Infrastracture.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ElDoma\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
+    "C:\\Users\\ElDoma\\.nuget\\packages\\bogus\\35.6.5\\bogus.35.6.5.nupkg.sha512",
     "C:\\Users\\ElDoma\\.nuget\\packages\\efcore.namingconventions\\9.0.0\\efcore.namingconventions.9.0.0.nupkg.sha512",
     "C:\\Users\\ElDoma\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
     "C:\\Users\\ElDoma\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.1.1\\fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",

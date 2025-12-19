@@ -18,6 +18,19 @@
           }
         }
       },
+      "Bogus/35.6.5": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Bogus.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Bogus.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "EFCore.NamingConventions/9.0.0": {
         "type": "package",
         "dependencies": {
@@ -1056,6 +1069,27 @@
         "icon.png",
         "lib/net8.0/AutoMapper.dll",
         "lib/net8.0/AutoMapper.xml"
+      ]
+    },
+    "Bogus/35.6.5": {
+      "sha512": "2FGZn+aAVHjmCgClgmGkTDBVZk0zkLvAKGaxEf5JL6b3i9JbHTE4wnuY4vHCuzlCmJdU6VZjgDfHwmYkQF8VAA==",
+      "type": "package",
+      "path": "bogus/35.6.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "bogus.128.png",
+        "bogus.35.6.5.nupkg.sha512",
+        "bogus.nuspec",
+        "lib/net40/Bogus.dll",
+        "lib/net40/Bogus.xml",
+        "lib/net6.0/Bogus.dll",
+        "lib/net6.0/Bogus.xml",
+        "lib/netstandard1.3/Bogus.dll",
+        "lib/netstandard1.3/Bogus.xml",
+        "lib/netstandard2.0/Bogus.dll",
+        "lib/netstandard2.0/Bogus.xml"
       ]
     },
     "EFCore.NamingConventions/9.0.0": {
@@ -3028,6 +3062,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "Bogus >= 35.6.5",
       "Bookify.Application >= 1.0.0",
       "EFCore.NamingConventions >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.0",
@@ -3090,6 +3125,11 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "Bogus": {
+            "target": "Package",
+            "version": "[35.6.5, )",
+            "versionCentrallyManaged": true
+          },
           "EFCore.NamingConventions": {
             "target": "Package",
             "version": "[9.0.0, )",
@@ -3115,6 +3155,7 @@
         },
         "centralPackageVersions": {
           "AutoMapper": "14.0.0",
+          "Bogus": "35.6.5",
           "EFCore.NamingConventions": "9.0.0",
           "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "MediatR": "12.5.0",

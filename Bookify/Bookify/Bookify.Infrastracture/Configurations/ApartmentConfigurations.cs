@@ -1,4 +1,5 @@
-﻿using Bookify.Domain.Apartment;
+﻿using Bogus;
+using Bookify.Domain.Apartment;
 using Bookify.Domain.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -40,6 +41,46 @@ namespace Bookify.Infrastracture.Configurations
                 .WithOne(review => review.Apartment)
                 .HasForeignKey(review => review.ApartmentId)
                 .IsRequired();
+
+
         }
+    }
+
+    public static class DamyData
+    {
+        public static IEnumerable<ApartmentModel> GetApartmentDemyData()
+        {
+            var faker = new Faker();
+            var apartments = new List<ApartmentModel>();
+
+            for (int i = 0; i < 100; i++)
+            {
+                var apartment = ApartmentModel.Create(
+                    new Name(faker.Company.CompanyName()),
+                    new Description(faker.Lorem.Paragraph()),
+                    new Address(
+                        faker.Address.StreetAddress(),
+                        faker.Address.City(),
+                        faker.Address.State(),
+                        faker.Address.ZipCode(),
+                        faker.Address.Country()
+                    ),
+                    new Money(faker.Random.Decimal(50, 500), Currency.FromCode("USD")),
+                    new Money(faker.Random.Decimal(10, 100), Currency.FromCode("USD")),
+                    new List<Amenity>
+                    {
+                        Amenity.Wifi,
+                        Amenity.AirConditioning,
+                        Amenity.Parking
+                    }
+                ).Value;
+                apartments.Add(apartment);
+            }
+            return apartments;
+
+        }
+       
+
+
     }
 }

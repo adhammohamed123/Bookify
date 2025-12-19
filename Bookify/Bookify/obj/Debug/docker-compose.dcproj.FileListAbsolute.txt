@@ -43,3 +43,4 @@ F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bi
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\OpenTelemetry.Instrumentation.Runtime.dll
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\System.Diagnostics.DiagnosticSource.dll
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Swashbuckle.AspNetCore.SwaggerUI.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Bogus.dll

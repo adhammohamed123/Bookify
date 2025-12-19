@@ -12,7 +12,7 @@ namespace Bookify.Infrastracture.Repositories
         =>  await AddAsync(apartmentModel);
 
         public IQueryable<ApartmentModel> GetAllApartmentsAvailableInAsync(DateRange duration, bool trackChanges)
-        => FindByCondition(a =>a.Bookings!.Any(b=> !NotEmpetyApartment.Contains(b.Status) && b.Duration.Start <=duration.End && b.Duration.End >=duration.Start ),trackChanges);
+        => FindByCondition(a => !a.Bookings!.Any(b=> NotEmpetyApartment.Contains(b.Status) && b.Duration.Start <=duration.End && b.Duration.End >=duration.Start ),trackChanges);
 
         public async Task<ApartmentModel?> GetApartmentAsync(Guid apartmentId, bool trackChanges)
        =>await FindByCondition(a => a.Id == apartmentId, trackChanges).FirstOrDefaultAsync();
