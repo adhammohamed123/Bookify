@@ -1,4 +1,5 @@
 using Bookify.Api.Extentions;
+using Bookify.Api.Middlewares;
 using Bookify.Application;
 using Bookify.Infrastracture;
 using Npgsql;
@@ -40,7 +41,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseAuthorization();
 
 app.MapControllers();
