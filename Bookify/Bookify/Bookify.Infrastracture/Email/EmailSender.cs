@@ -1,16 +1,52 @@
 ﻿using Bookify.Application.Abstractions.Email;
 using Bookify.Domain.User;
+using MailKit.Net.Smtp;
+using Microsoft.Extensions.Options;
+using MimeKit;
+
 
 namespace Bookify.Infrastracture.Email
 {
+    public class EmailSettings
+    {
+        public required string SmtpServer { get; set; }
+        public required int Port { get; set; }
+        public required string From { get; set; }
+        public required string DisplayName { get; set; }
+        public required string ReplayTo { get; set; }
+        public required string Password { get; set; }
+        public bool EnableSsl { get; set; }
+
+
+    }
+
+
+
     internal sealed class EmailSender : IEmailSender
     {
-        public Task SendEmailAsync(Bookify.Domain.User.Email email, string subject, string body, CancellationToken cancellationToken = default)
+        private readonly EmailSettings settings;
+
+        public EmailSender(IOptions<EmailSettings> settingsOptions)
         {
-            Console.WriteLine($"To:{email.Value}");
-            Console.WriteLine($"Subject:{subject}");
-            Console.WriteLine($"Body:{body}");
-            return Task.CompletedTask;
+            this.settings = settingsOptions.Value;
+        }
+        public async Task SendEmailAsync(Bookify.Domain.User.Email email, string subject, string body,bool isHtml, CancellationToken cancellationToken = default)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(settings.DisplayName,settings.From));
+            message.To.Add(MailboxAddress.Parse(email.Value));
+            message.ReplyTo.Add(MailboxAddress.Parse(settings.ReplayTo));
+            message.Subject = subject;
+
+            message.Body = new TextPart(isHtml?"html" :"plain")
+            {
+                Text= body 
+            };
+
+           using var smtpserver = new SmtpClient();
+           await smtpserver.ConnectAsync(settings.SmtpServer,settings.Port,settings.EnableSsl);
+           await smtpserver.SendAsync(message);
+            
         }
     }
 }

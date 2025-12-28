@@ -6,12 +6,14 @@ using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options=>options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 builder.Services.AddOpenApi();
 
 builder.Services
@@ -34,7 +36,7 @@ if (app.Environment.IsDevelopment())
         config.SwaggerEndpoint("/openapi/v1.json", "Bookify Api v1");
     });
     await app.ApplayMigrationAsync();
-    app.AddDamyData();
+    //app.AddDamyData();
 }
 
 app.UseHttpsRedirection();

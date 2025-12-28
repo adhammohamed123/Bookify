@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Bookify.Application.Abstractions.Clock;
 using Bookify.Application.Abstractions.Messaging;
 using Bookify.Application.Apartment.Dtos;
 using Bookify.Domain.Abstractions;
@@ -7,13 +8,14 @@ using Bookify.Domain.Booking;
 
 namespace Bookify.Application.Apartment.SearchApartments
 {
-     public record SearchApartmentsQuery(DateTime Start,DateTime End):IQuery<IReadOnlyList<ApartmentDto>>;
+     public record SearchApartmentsQuery(DateOnly Start,DateOnly End):IQuery<IReadOnlyList<ApartmentDto>>;
    
-    internal sealed class SearchApartmentsHandler(IRepositoryManager repositoryManager,IMapper mapper)
+    internal sealed class SearchApartmentsHandler(IRepositoryManager repositoryManager,IMapper mapper,IDateTimeProvider dateTimeProvider)
         : IQueryHandler<SearchApartmentsQuery, IReadOnlyList<ApartmentDto>>
     {
         private readonly IRepositoryManager repositoryManager = repositoryManager;
         private readonly IMapper mapper = mapper;
+        private readonly IDateTimeProvider dateTimeProvider = dateTimeProvider;
 
         public async Task<Result<IReadOnlyList<ApartmentDto>>> Handle(SearchApartmentsQuery request, CancellationToken cancellationToken)
         {
@@ -22,7 +24,11 @@ namespace Bookify.Application.Apartment.SearchApartments
             {
                 return Result.Failure<IReadOnlyList<ApartmentDto>>(DateRange.InValid);
             }
-            var duration = DateRange.Create(DateOnly.FromDateTime(request.Start), DateOnly.FromDateTime(request.End));
+            if( request.Start < DateOnly.FromDateTime(dateTimeProvider.UtcNow))
+            {
+                return Result.Failure<IReadOnlyList<ApartmentDto>>(new("SearchParameters.InValid", "Start cannot be in the past"));
+            }
+            var duration = DateRange.Create(request.Start, request.End);
             var apartments =  repositoryManager.ApartmentRepository.GetAllApartmentsAvailableInAsync(duration,false).ToList();
 
            var apartmentDtos= mapper.Map<IReadOnlyList<ApartmentDto>>(apartments);

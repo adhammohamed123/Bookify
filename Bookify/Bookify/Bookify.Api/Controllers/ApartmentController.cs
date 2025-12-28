@@ -11,8 +11,8 @@ namespace Bookify.Api.Controllers
     {
         private readonly ISender sender = sender;
 
-        [HttpGet]
-        public async Task<IActionResult> SearchApartment(DateTime start,DateTime end,CancellationToken cancellationToken) 
+        [HttpGet("SearchForAvalialbeApartment")]
+        public async Task<IActionResult> SearchApartment(DateOnly start,DateOnly end,CancellationToken cancellationToken) 
         {
             var apartmentsQuery = new SearchApartmentsQuery(start,end);
             var result = await sender.Send(apartmentsQuery,cancellationToken);

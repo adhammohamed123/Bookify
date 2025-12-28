@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Bookify.Domain.DomainServices
 {
-    public  class PricingService
+    public static class PricingService
     {
         public static PricingDetails Calc(ApartmentModel apartment,DateRange duration)
         {

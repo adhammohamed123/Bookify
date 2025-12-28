@@ -9,6 +9,6 @@ namespace Bookify.Application.Abstractions.Email
 {
     public interface IEmailSender
     {
-        Task SendEmailAsync(Bookify.Domain.User.Email email , string subject, string body, CancellationToken cancellationToken = default);
+        Task SendEmailAsync(Bookify.Domain.User.Email email , string subject, string body,bool isHtml, CancellationToken cancellationToken = default);
     }
 }

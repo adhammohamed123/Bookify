@@ -16,7 +16,8 @@ namespace Bookify.Infrastracture
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services,IConfiguration configuration)
         {
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-            services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+            services.AddScoped<IEmailSender, EmailSender>();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -25,6 +26,7 @@ namespace Bookify.Infrastracture
                 .UseSnakeCaseNamingConvention();
             });
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+           
             return services;
         }
     }
