@@ -1,5 +1,6 @@
 ﻿using Bookify.Domain.Abstractions.Repositories;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bookify.Infrastracture.Repositories
 {
@@ -20,9 +21,17 @@ namespace Bookify.Infrastracture.Repositories
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-             var result = await context.SaveChangesAsync(cancellationToken);
-             await PublishDomainEvents(cancellationToken);
-             return  result;
+            try
+            {
+                var result = await context.SaveChangesAsync(cancellationToken);
+                await PublishDomainEvents(cancellationToken);
+                return result;
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new 
+            }
+
         }
         private async Task PublishDomainEvents(CancellationToken cancellationToken)
         {

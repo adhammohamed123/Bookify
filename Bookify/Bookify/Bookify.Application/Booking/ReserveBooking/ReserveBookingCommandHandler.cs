@@ -1,5 +1,6 @@
 ﻿using Bookify.Application.Abstractions.Clock;
 using Bookify.Application.Abstractions.Messaging;
+using Bookify.Application.Exceptions;
 using Bookify.Domain.Abstractions;
 using Bookify.Domain.Abstractions.Repositories;
 using Bookify.Domain.Booking;
@@ -35,17 +36,19 @@ namespace Bookify.Application.Booking.ReserveBooking
                 return Result.Failure<Guid>(BookingErrors.BookingDateOverLapped);
             }
 
-            var bookingResult = BookingModel.Reserve(user.Value.Id, apartment,dateRange, dateTimeProvider.UtcNow); // raise domain event so we need domain event handler
-
-            if (bookingResult.IsFaliure)
+            try
             {
-                return Result.Failure<Guid>(BookingErrors.FailedProcess);
+                var bookingResult = BookingModel.Reserve(user.Value.Id, apartment, dateRange, dateTimeProvider.UtcNow); // raise domain event so we need domain event handler
+
+                await repositoryManager.BookingRepository.AddBookingAsync(bookingResult);
+                await repositoryManager.SaveChangesAsync(cancellationToken);
+                #endregion
+                return Result.Success(bookingResult.Value.Id);
             }
-           
-           await repositoryManager.BookingRepository.AddBookingAsync(bookingResult);
-           await repositoryManager.SaveChangesAsync(cancellationToken);
-            #endregion
-            return Result.Success(bookingResult.Value.Id);
+            catch (ConcurrencyException)
+            {
+                return Result.Failure<Guid>(BookingErrors.BookingDateOverLapped);
+            }
                
         }
     }
