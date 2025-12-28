@@ -22,7 +22,7 @@ namespace Bookify.Application.Booking.ReserveBooking
             if (user == null)
                 return;
 
-            await  emailSender.SendEmailAsync(user.Email,"Your are Reserving a New Booking","you have 10 minutes to Confirm this Booking",cancellationToken);
+            await  emailSender.SendEmailAsync(user.Email,"Your are Reserving a New Booking","you have 10 minutes to Confirm this Booking",false,cancellationToken);
         }
     }
 

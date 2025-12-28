@@ -1,4 +1,5 @@
-﻿using Bookify.Domain.Abstractions.Repositories;
+﻿using Bookify.Application.Exceptions;
+using Bookify.Domain.Abstractions.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,7 +30,7 @@ namespace Bookify.Infrastracture.Repositories
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                throw new 
+                throw new ConcurrencyException("concurrency exception has been occured", ex);
             }
 
         }

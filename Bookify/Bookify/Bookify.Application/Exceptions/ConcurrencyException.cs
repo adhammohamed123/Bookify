@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bookify.Application.Exceptions
 {
-    public sealed class ConcurrencyException :Exception
+    public sealed class ConcurrencyException(string message, Exception innerException) : Exception(message,innerException)
     {
-        public ConcurrencyException(string message,DBConcurrencyException innerException)
-            :base(message,innerException)
-        {
-            
-        }
     }
 }

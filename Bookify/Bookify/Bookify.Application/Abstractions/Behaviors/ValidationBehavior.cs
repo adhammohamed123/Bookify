@@ -4,16 +4,11 @@ using MediatR;
 
 namespace Bookify.Application.Abstractions.Behaviors
 {
-    public class ValidationBehavior<TRequest, TResponse>
+    public class ValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
         : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IBaseCommand
     {
-        private readonly IEnumerable<IValidator<TRequest>> _validators;
-
-        public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
-        {
-            _validators = validators;
-        }
+        private readonly IEnumerable<IValidator<TRequest>> _validators = validators;
 
         public async Task<TResponse> Handle(
             TRequest request,
@@ -22,39 +17,34 @@ namespace Bookify.Application.Abstractions.Behaviors
         {
             if (!_validators.Any())
             {
-                return await next();
+                return await next(cancellationToken);
             }
 
             var context = new ValidationContext<TRequest>(request);
 
             var validationErrors = _validators
                 .Select(validator => validator.Validate(context))
-                .Where(validationResult => validationResult.Errors.Any())
+                .Where(validationResult => validationResult.Errors.Count != 0)
                 .SelectMany(validationResult => validationResult.Errors)
                 .Select(validationFailure => new ValidationError(
                     validationFailure.PropertyName,
                     validationFailure.ErrorMessage))
                 .ToList();
 
-            if (validationErrors.Any())
+            if (validationErrors.Count != 0)
             {
                 throw new ValidationException(validationErrors);
             }
 
-            return await next();
+            return await next(cancellationToken);
         }
     }
 
    
 
-    public sealed class ValidationException : Exception
+    public sealed class ValidationException(IEnumerable<ValidationError> errors) : Exception
     {
-        public ValidationException(IEnumerable<ValidationError> errors)
-        {
-            Errors = errors;
-        }
-
-        public IEnumerable<ValidationError> Errors { get; }
+        public IEnumerable<ValidationError> Errors { get; } = errors;
     }
     public sealed record ValidationError(string PropertyName, string ErrorMessage);
 

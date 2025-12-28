@@ -9,7 +9,9 @@ namespace Bookify.Domain.Apartment
     // anemic domain model
     public sealed class ApartmentModel:Entity
     {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         private ApartmentModel()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
             
         }
@@ -32,7 +34,7 @@ namespace Bookify.Domain.Apartment
             Amenities = amenities;
         }
 
-        public Name Name { get; private set; }
+        public  Name Name { get; private set; }
         public Description Description { get; private set; }
         public Address Address { get; private set; }
         public Money Price { get; private set; }

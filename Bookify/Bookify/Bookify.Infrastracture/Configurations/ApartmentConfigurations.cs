@@ -67,12 +67,11 @@ namespace Bookify.Infrastracture.Configurations
                     ),
                     new Money(faker.Random.Decimal(50, 500), Currency.FromCode("USD")),
                     new Money(faker.Random.Decimal(10, 100), Currency.FromCode("USD")),
-                    new List<Amenity>
-                    {
+                    [
                         Amenity.Wifi,
                         Amenity.AirConditioning,
                         Amenity.Parking
-                    }
+                    ]
                 ).Value;
                 apartments.Add(apartment);
             }

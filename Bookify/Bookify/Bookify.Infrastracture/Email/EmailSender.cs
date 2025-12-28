@@ -22,14 +22,10 @@ namespace Bookify.Infrastracture.Email
 
 
 
-    internal sealed class EmailSender : IEmailSender
+    internal sealed class EmailSender(IOptions<EmailSettings> settingsOptions) : IEmailSender
     {
-        private readonly EmailSettings settings;
+        private readonly EmailSettings settings = settingsOptions.Value;
 
-        public EmailSender(IOptions<EmailSettings> settingsOptions)
-        {
-            this.settings = settingsOptions.Value;
-        }
         public async Task SendEmailAsync(Bookify.Domain.User.Email email, string subject, string body,bool isHtml, CancellationToken cancellationToken = default)
         {
             var message = new MimeMessage();
@@ -44,8 +40,8 @@ namespace Bookify.Infrastracture.Email
             };
 
            using var smtpserver = new SmtpClient();
-           await smtpserver.ConnectAsync(settings.SmtpServer,settings.Port,settings.EnableSsl);
-           await smtpserver.SendAsync(message);
+           await smtpserver.ConnectAsync(settings.SmtpServer,settings.Port,settings.EnableSsl,cancellationToken);
+           await smtpserver.SendAsync(message,cancellationToken);
             
         }
     }

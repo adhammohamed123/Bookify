@@ -4,15 +4,10 @@ using Microsoft.Extensions.Logging;
 
 namespace Bookify.Application.Abstractions.Behaviors
 {
-    public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class LoggingBehavior<TRequest, TResponse>(ILogger<TRequest> logger) : IPipelineBehavior<TRequest, TResponse>
        where TRequest : IBaseCommand
     {
-        private readonly ILogger<TRequest> logger;
-
-        public LoggingBehavior(ILogger<TRequest> logger)
-        {
-            this.logger = logger;
-        }
+        private readonly ILogger<TRequest> logger = logger;
 
         public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
@@ -20,7 +15,7 @@ namespace Bookify.Application.Abstractions.Behaviors
             try
             {
                 logger.LogInformation("Handling request {RequestName}", requestName);
-                var response = next();
+                var response = next(cancellationToken);
                 logger.LogInformation("Request {RequestName} handled successfully", requestName);
                 return response;
 

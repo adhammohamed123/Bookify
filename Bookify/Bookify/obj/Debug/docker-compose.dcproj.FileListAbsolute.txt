@@ -44,3 +44,6 @@ F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bi
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\System.Diagnostics.DiagnosticSource.dll
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Swashbuckle.AspNetCore.SwaggerUI.dll
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Bogus.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.Extensions.Options.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.Extensions.Options.ConfigurationExtensions.dll
