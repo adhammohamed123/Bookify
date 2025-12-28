@@ -29,7 +29,8 @@ namespace Bookify.Application.Booking.ReserveBooking
                 return Result.Failure<Guid>(apartment.Error);
             }
             #region Here we need optimistic concurrency
-            DateRange dateRange = DateRange.Create(DateOnly.FromDateTime (request.StartDateUtc), DateOnly.FromDateTime (request.EndDateUtc)); // will not throw error because already validated in validator
+             DateRange dateRange = DateRange.Create(DateOnly.FromDateTime (request.StartDateUtc), DateOnly.FromDateTime (request.EndDateUtc)); // will not throw error because already validated in validator
+           
             var isOverlapping = await repositoryManager.BookingRepository.IsOverLappedBooking(request.ApartmentId,duration:dateRange ,cancellationToken);
             if(isOverlapping)
             {

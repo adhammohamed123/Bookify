@@ -11,8 +11,10 @@
           "Bogus": "35.6.5",
           "Bookify.Application": "1.0.0",
           "EFCore.NamingConventions": "9.0.0",
+          "MailKit": "4.14.1",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.11",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.0"
         },
         "runtime": {
@@ -21,7 +23,7 @@
       },
       "AutoMapper/14.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Options": "9.0.0"
+          "Microsoft.Extensions.Options": "9.0.11"
         },
         "runtime": {
           "lib/net8.0/AutoMapper.dll": {
@@ -35,6 +37,14 @@
           "lib/net6.0/Bogus.dll": {
             "assemblyVersion": "35.6.5.0",
             "fileVersion": "35.6.5.0"
+          }
+        }
+      },
+      "BouncyCastle.Cryptography/2.6.1": {
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.6.1.59591"
           }
         }
       },
@@ -76,6 +86,17 @@
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
+          }
+        }
+      },
+      "MailKit/4.14.1": {
+        "dependencies": {
+          "MimeKit": "4.14.0"
+        },
+        "runtime": {
+          "lib/net8.0/MailKit.dll": {
+            "assemblyVersion": "4.14.0.0",
+            "fileVersion": "4.14.1.0"
           }
         }
       },
@@ -460,7 +481,7 @@
           "Microsoft.Extensions.Caching.Abstractions": "9.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.11",
-          "Microsoft.Extensions.Options": "9.0.0",
+          "Microsoft.Extensions.Options": "9.0.11",
           "Microsoft.Extensions.Primitives": "9.0.11"
         },
         "runtime": {
@@ -476,6 +497,17 @@
         },
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1125.51716"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/9.0.11": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.11"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Configuration.Binder.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.1125.51716"
           }
@@ -512,7 +544,7 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "9.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.11",
-          "Microsoft.Extensions.Options": "9.0.0"
+          "Microsoft.Extensions.Options": "9.0.11"
         },
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.Logging.dll": {
@@ -532,7 +564,7 @@
           }
         }
       },
-      "Microsoft.Extensions.Options/9.0.0": {
+      "Microsoft.Extensions.Options/9.0.11": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
           "Microsoft.Extensions.Primitives": "9.0.11"
@@ -540,7 +572,22 @@
         "runtime": {
           "lib/net9.0/Microsoft.Extensions.Options.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.24.52809"
+            "fileVersion": "9.0.1125.51716"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/9.0.11": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Configuration.Binder": "9.0.11",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Options": "9.0.11",
+          "Microsoft.Extensions.Primitives": "9.0.11"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1125.51716"
           }
         }
       },
@@ -549,6 +596,18 @@
           "lib/net9.0/Microsoft.Extensions.Primitives.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.1125.51716"
+          }
+        }
+      },
+      "MimeKit/4.14.0": {
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.6.1",
+          "System.Security.Cryptography.Pkcs": "8.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/MimeKit.dll": {
+            "assemblyVersion": "4.14.0.0",
+            "fileVersion": "4.14.0.0"
           }
         }
       },
@@ -655,6 +714,22 @@
           }
         }
       },
+      "System.Security.Cryptography.Pkcs/8.0.1": {
+        "runtime": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46610"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46610"
+          }
+        }
+      },
       "Bookify.Application/1.0.0": {
         "dependencies": {
           "AutoMapper": "14.0.0",
@@ -704,6 +779,13 @@
       "path": "bogus/35.6.5",
       "hashPath": "bogus.35.6.5.nupkg.sha512"
     },
+    "BouncyCastle.Cryptography/2.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vZsG2YILhthgRqO+ZVgRff4ZFKKTl0v7kqaVBLCtRvpREhfBP33pcWrdA3PRYgWuFL1RxiUFvjMUHTdBZlJcoA==",
+      "path": "bouncycastle.cryptography/2.6.1",
+      "hashPath": "bouncycastle.cryptography.2.6.1.nupkg.sha512"
+    },
     "EFCore.NamingConventions/9.0.0": {
       "type": "package",
       "serviceable": true,
@@ -731,6 +813,13 @@
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "MailKit/4.14.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rawu+h3lSSjKra0AxR+IUB99VQ7jWI+MvxThekqLhf+ic7VQ7a69lmPFW+LXuRYHla4ADcn3x16Gsvju3LTq9w==",
+      "path": "mailkit/4.14.1",
+      "hashPath": "mailkit.4.14.1.nupkg.sha512"
     },
     "MediatR/12.5.0": {
       "type": "package",
@@ -851,6 +940,13 @@
       "path": "microsoft.extensions.configuration.abstractions/9.0.11",
       "hashPath": "microsoft.extensions.configuration.abstractions.9.0.11.nupkg.sha512"
     },
+    "Microsoft.Extensions.Configuration.Binder/9.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iPE1jROL5uK/6iJSRzwpEIJt6BuANN36Io+6bLss67JVjbG6DdVedrMnB9nqsxs+Lx3X9RxvARTgFsUgP0MB0g==",
+      "path": "microsoft.extensions.configuration.binder/9.0.11",
+      "hashPath": "microsoft.extensions.configuration.binder.9.0.11.nupkg.sha512"
+    },
     "Microsoft.Extensions.DependencyInjection/9.0.0": {
       "type": "package",
       "serviceable": true,
@@ -886,12 +982,19 @@
       "path": "microsoft.extensions.logging.abstractions/9.0.11",
       "hashPath": "microsoft.extensions.logging.abstractions.9.0.11.nupkg.sha512"
     },
-    "Microsoft.Extensions.Options/9.0.0": {
+    "Microsoft.Extensions.Options/9.0.11": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-y2146b3jrPI3Q0lokKXdKLpmXqakYbDIPDV6r3M8SqvSf45WwOTzkyfDpxnZXJsJQEpAsAqjUq5Pu8RCJMjubg==",
-      "path": "microsoft.extensions.options/9.0.0",
-      "hashPath": "microsoft.extensions.options.9.0.0.nupkg.sha512"
+      "sha512": "sha512-HX4M3BLkW1dtByMKHDVq6r7Jy6e4hf8NDzHpIgz7C8BtYk9JQHhfYX5c1UheQTD5Veg1yBhz/cD9C8vtrGrk9w==",
+      "path": "microsoft.extensions.options/9.0.11",
+      "hashPath": "microsoft.extensions.options.9.0.11.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/9.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HUzr4c1eMXCQN8Yre2JdCzYmLJAecFGVXfByVhjEY4jBaHIs8EAxdv72WMUa2GcROlkYPbYNzMbcqJPMiznHxw==",
+      "path": "microsoft.extensions.options.configurationextensions/9.0.11",
+      "hashPath": "microsoft.extensions.options.configurationextensions.9.0.11.nupkg.sha512"
     },
     "Microsoft.Extensions.Primitives/9.0.11": {
       "type": "package",
@@ -899,6 +1002,13 @@
       "sha512": "sha512-rtUNSIhbQTv8iSBTFvtg2b/ZUkoqC9qAH9DdC2hr+xPpoZrxiCITci9UR/ELUGUGnGUrF8Xye+tGVRhCxE+4LA==",
       "path": "microsoft.extensions.primitives/9.0.11",
       "hashPath": "microsoft.extensions.primitives.9.0.11.nupkg.sha512"
+    },
+    "MimeKit/4.14.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g0LtsMC8DCTkc030C3UgVqbltOJmV5cz4AX8ASowz2ZA+lxopXSYtC1XXYmenxy606aWFLwi5Xy4cC/zyYjbjQ==",
+      "path": "mimekit/4.14.0",
+      "hashPath": "mimekit.4.14.0.nupkg.sha512"
     },
     "Mono.TextTemplating/3.0.0": {
       "type": "package",
@@ -969,6 +1079,13 @@
       "sha512": "sha512-ZK0KNPfbtxVceTwh+oHNGUOYV2WNOHReX2AXipuvkURC7s/jPwoWfsu3SnDBDgofqbiWr96geofdQ2erm/KTHg==",
       "path": "system.composition.typedparts/7.0.0",
       "hashPath": "system.composition.typedparts.7.0.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Pkcs/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA==",
+      "path": "system.security.cryptography.pkcs/8.0.1",
+      "hashPath": "system.security.cryptography.pkcs.8.0.1.nupkg.sha512"
     },
     "Bookify.Application/1.0.0": {
       "type": "project",

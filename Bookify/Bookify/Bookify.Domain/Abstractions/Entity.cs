@@ -18,7 +18,7 @@ namespace Bookify.Domain.Abstractions
 
         public bool IsDeleted { get; private set; }
         public void Delete() => IsDeleted = true;
-        public IReadOnlyCollection<IDomainEvent> GetDomainEvents => _domainEvents.AsReadOnly();
+        public IReadOnlyCollection<IDomainEvent> GetDomainEvents => _domainEvents.ToList();
         public void RaiseDomainEvent(IDomainEvent domainEvent)=>_domainEvents.Add(domainEvent);
         public void ClearDomainEvents()=>_domainEvents.Clear();
     }

@@ -12,7 +12,7 @@ namespace Bookify.Infrastracture
         }
 
         public List<Entity> GetTrackedEntities()
-        => [..ChangeTracker.Entries<Entity>().Select(e => e.Entity)]; // equals to ToList()
+        => ChangeTracker.Entries<Entity>().Select(e => e.Entity).ToList(); // equals to ToList()
 
     }
 }

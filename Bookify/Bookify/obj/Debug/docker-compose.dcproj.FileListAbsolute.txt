@@ -47,3 +47,6 @@ F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bi
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.Extensions.Options.dll
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\MimeKit.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\MailKit.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\BouncyCastle.Cryptography.dll

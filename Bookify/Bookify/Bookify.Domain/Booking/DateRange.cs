@@ -12,7 +12,7 @@ namespace Bookify.Domain.Booking
 
         public DateOnly Start { get; private set; }
         public DateOnly End { get; private set; }
-        public int LengthInDays => End.DayNumber - Start.DayNumber;
+        internal int LengthInDays => End.DayNumber - Start.DayNumber;
 
         public static Error InValid => new("DateRange.InValid", "invalid date range start can not exceed end date");
 

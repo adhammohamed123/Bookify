@@ -40,8 +40,11 @@ namespace Bookify.Infrastracture.Email
             };
 
            using var smtpserver = new SmtpClient();
-           await smtpserver.ConnectAsync(settings.SmtpServer,settings.Port,settings.EnableSsl,cancellationToken);
-           await smtpserver.SendAsync(message,cancellationToken);
+           await smtpserver.ConnectAsync(settings.SmtpServer,settings.Port,settings.EnableSsl == true? MailKit.Security.SecureSocketOptions.StartTls : MailKit.Security.SecureSocketOptions.None ,cancellationToken);
+
+            await smtpserver.AuthenticateAsync(settings.From, settings.Password, cancellationToken);
+            
+            await smtpserver.SendAsync(message,cancellationToken);
             
         }
     }

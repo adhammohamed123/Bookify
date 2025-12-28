@@ -3,6 +3,14 @@ using Bookify.Domain.Shared;
 
 namespace Bookify.Application.Booking.Dtos
 {
+   public record BookingForCreationDto
+   {
+        public Guid UserId { get; set; }
+        public Guid ApartmentId { get; set; }
+
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+    }
     public record BookingDto
     {
         public Guid Id { get; set; }

@@ -71,6 +71,7 @@ namespace Bookify.Domain.Booking
                 Status = BookingStatus.Reserved
             };
             apartment.LastBookedOnUtc = createdAtUtc;
+            
             booking.RaiseDomainEvent(new BookingWasCreatedDomainEvent(booking.Id));
            
            return booking;
