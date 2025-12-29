@@ -20,7 +20,7 @@ services:
       - POSTGRES_PASSWORD=bookify@123
       - POSTGRES_DB=bookifydb
     ports:
-      - "5432:5432"
+      - "15432:5432"
     volumes:
       - .containers/postgres-data/data:/var/lib/postgresql/data
   
@@ -30,3 +30,4 @@ services:
       - "18888:18888" 
     environment:
       - DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true
+

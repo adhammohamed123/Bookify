@@ -40,8 +40,9 @@ if (app.Environment.IsDevelopment())
     //app.AddDamyData();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

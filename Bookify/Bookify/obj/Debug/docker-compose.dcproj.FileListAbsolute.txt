@@ -50,3 +50,11 @@ F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bi
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\MimeKit.dll
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\MailKit.dll
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\BouncyCastle.Cryptography.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.IdentityModel.Logging.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.IdentityModel.Abstractions.dll

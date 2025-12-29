@@ -65,6 +65,7 @@
             "MailKit": "4.14.1",
             "MediatR": "12.5.0",
             "MediatR.Contracts": "2.0.1",
+            "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.11",
             "Microsoft.AspNetCore.OpenApi": "9.0.11",
             "Microsoft.EntityFrameworkCore.Design": "9.0.0",
             "Microsoft.EntityFrameworkCore.Tools": "9.0.0",

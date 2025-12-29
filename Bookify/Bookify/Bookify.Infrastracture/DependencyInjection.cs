@@ -3,7 +3,9 @@ using Bookify.Application.Abstractions.Email;
 using Bookify.Domain.Abstractions.Repositories;
 using Bookify.Infrastracture.Clock;
 using Bookify.Infrastracture.Email;
+using Bookify.Infrastracture.Keyclock;
 using Bookify.Infrastracture.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +28,26 @@ namespace Bookify.Infrastracture
                 .UseSnakeCaseNamingConvention();
             });
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+
+             var keyclockOptions =  configuration.GetSection("KeyClock").Get<KeyclockOptions>();
+          
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = keyclockOptions.Issuer;
+                    options.Audience = keyclockOptions.Audience;
+                    options.MetadataAddress = keyclockOptions.MetadataAddress;
+                    options.RequireHttpsMetadata = keyclockOptions.RequireHttpsMetadata;
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ValidateLifetime = true,
+                        ValidAudience = keyclockOptions.Audience,
+                        ValidIssuer = keyclockOptions.Issuer,
+                        NameClaimType = "preferred_username"
+                    };
+                });
            
             return services;
         }
