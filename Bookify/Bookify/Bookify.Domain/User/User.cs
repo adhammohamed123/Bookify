@@ -30,14 +30,21 @@ namespace Bookify.Domain.User
         public Email Email { get; private set; }
 
         public ICollection<ReviewModel>? Reviews{ get; set; }
-        public static Result<UserModel> CreateNewUser(FirstName firstName,
+        public static Result<UserModel> CreateNewUser(Guid id,FirstName firstName,
             LastName lastName,
             Email email)
         {
             // add any business rules or validations here
-            var user = new UserModel(Guid.NewGuid(),firstName,lastName, email);
+            var user = new UserModel(id,firstName,lastName, email);
             user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id,user.Email.Value));
             return Result.Success(user);
+        }
+
+        public void UpdateData(FirstName firstName,LastName lastName,Email email)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
         }
     }
 

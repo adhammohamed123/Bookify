@@ -34,10 +34,10 @@ namespace Bookify.Infrastracture
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.Authority = keyclockOptions.Issuer;
+                    options.Authority = keyclockOptions!.Issuer;
                     options.Audience = keyclockOptions.Audience;
-                    options.MetadataAddress = keyclockOptions.MetadataAddress;
-                    options.RequireHttpsMetadata = keyclockOptions.RequireHttpsMetadata;
+                    options.MetadataAddress = keyclockOptions?.MetadataAddress!;
+                    options.RequireHttpsMetadata = keyclockOptions!.RequireHttpsMetadata;
                     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                     {
                         ValidateAudience = true,

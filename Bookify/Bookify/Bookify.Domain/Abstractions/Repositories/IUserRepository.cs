@@ -8,6 +8,7 @@ namespace Bookify.Domain.Abstractions.Repositories
 {
     public interface IUserRepository
     {
+        Task AddNewUser(UserModel newUser);
         Task<UserModel?> GetUserAsync(Guid userId, bool trackChanges);
         IQueryable<UserModel> GetUsersAsync(bool trackChanges); 
     }
