@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Bookify.Application.Abstractions.Clock;
 using Bookify.Domain.Abstractions;
 using Bookify.Domain.Abstractions.Repositories;
 using Bookify.Domain.Apartment;
@@ -16,7 +17,6 @@ namespace Bookify.Application.Booking
     internal abstract class BookingBaseHandler(IRepositoryManager repositoryManager)
     {
         protected readonly IRepositoryManager repositoryManager = repositoryManager;
-        
 
         protected async Task<Result<UserModel>> CheckUserExistanceAsync(Guid UserId,bool track)
         {

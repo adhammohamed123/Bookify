@@ -6,27 +6,20 @@ using MediatR;
 
 namespace Bookify.Application.User.Register
 {
-    internal sealed class CreateUserDomainEventHandler : INotificationHandler<UserCreatedDomainEvent>
+    internal sealed class CreateUserDomainEventHandler(
+      IEmailSender emailSender,
+      IRepositoryManager repositoryManager
+
+           ) : INotificationHandler<UserCreatedDomainEvent>
     {
-        private readonly IEmailSender emailSender;
-        private readonly IRepositoryManager repositoryManager;
-
-        // dependencies injected via constructor
-
-        public CreateUserDomainEventHandler(
-          IEmailSender emailSender,
-          IRepositoryManager repositoryManager
-
-           )
-        {
-            this.emailSender = emailSender;
-            this.repositoryManager = repositoryManager;
-        }
+        private readonly IEmailSender emailSender = emailSender;
+        private readonly IRepositoryManager repositoryManager = repositoryManager;
 
         public async Task Handle(UserCreatedDomainEvent notification, CancellationToken cancellationToken)
         {
             var user = await repositoryManager.UserRepository.GetUserAsync(notification.userId, false);
-         
+            if (user is null) return; 
+
             await emailSender.SendEmailAsync(
                 Email.Create("adhammo909@gmail.com"),
                 "New User Is Registerd In Our Bookify System",
