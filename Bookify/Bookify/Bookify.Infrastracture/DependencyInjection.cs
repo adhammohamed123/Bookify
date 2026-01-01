@@ -1,6 +1,8 @@
-﻿using Bookify.Application.Abstractions.Clock;
+﻿using Bookify.Application.Abstractions.Caching;
+using Bookify.Application.Abstractions.Clock;
 using Bookify.Application.Abstractions.Email;
 using Bookify.Domain.Abstractions.Repositories;
+using Bookify.Infrastracture.Caching;
 using Bookify.Infrastracture.Clock;
 using Bookify.Infrastracture.Email;
 using Bookify.Infrastracture.Keyclock;
@@ -20,6 +22,15 @@ namespace Bookify.Infrastracture
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
             services.AddScoped<IEmailSender, EmailSender>();
+
+            AddDbContextWithRepositoryManager(services, configuration);
+            AddAuthenticationAndKeyClockConfig(services, configuration);
+            AddCaching(services, configuration);
+            return services;
+        }
+
+        private static void AddDbContextWithRepositoryManager(IServiceCollection services, IConfiguration configuration)
+        {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -28,9 +39,12 @@ namespace Bookify.Infrastracture
                 .UseSnakeCaseNamingConvention();
             });
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+        }
 
-             var keyclockOptions =  configuration.GetSection("KeyClock").Get<KeyclockOptions>();
-          
+        private static void AddAuthenticationAndKeyClockConfig(IServiceCollection services, IConfiguration configuration)
+        {
+            var keyclockOptions = configuration.GetSection("KeyClock").Get<KeyclockOptions>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -48,8 +62,18 @@ namespace Bookify.Infrastracture
                         NameClaimType = "preferred_username"
                     };
                 });
-           
-            return services;
+        }
+
+        private static void AddCaching(IServiceCollection services, IConfiguration configuration)
+        {
+            var CacheConnectionString = configuration.GetConnectionString("Cache") ?? throw new InvalidOperationException("cache ConStr not Specified");
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.InstanceName = "MyRedisCache";
+                options.Configuration = CacheConnectionString;
+            });
+
+            services.AddSingleton<ICacheService, CacheService>();
         }
     }
 }

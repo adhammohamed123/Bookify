@@ -528,6 +528,7 @@
           "Microsoft.AspNetCore.OpenApi": "9.0.11",
           "Microsoft.EntityFrameworkCore.Design": "9.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.0",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "9.0.11",
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.11",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.11",

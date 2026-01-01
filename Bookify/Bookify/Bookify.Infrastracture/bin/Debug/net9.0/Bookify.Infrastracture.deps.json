@@ -14,6 +14,7 @@
           "MailKit": "4.14.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.11",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.0",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "9.0.11",
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.11",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.11",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.0"
@@ -471,6 +472,31 @@
           "Microsoft.EntityFrameworkCore.Design": "9.0.0"
         }
       },
+      "Microsoft.Extensions.Caching.Abstractions/9.0.11": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "9.0.11"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Caching.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1125.51716"
+          }
+        }
+      },
+      "Microsoft.Extensions.Caching.StackExchangeRedis/9.0.11": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.11",
+          "Microsoft.Extensions.Options": "9.0.11",
+          "StackExchange.Redis": "2.7.27"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll": {
+            "assemblyVersion": "9.0.11.0",
+            "fileVersion": "9.0.1125.52006"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/9.0.11": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "9.0.11"
@@ -662,6 +688,26 @@
           "lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.0.0"
+          }
+        }
+      },
+      "Pipelines.Sockets.Unofficial/2.2.8": {
+        "runtime": {
+          "lib/net5.0/Pipelines.Sockets.Unofficial.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "2.2.8.1080"
+          }
+        }
+      },
+      "StackExchange.Redis/2.7.27": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.11",
+          "Pipelines.Sockets.Unofficial": "2.2.8"
+        },
+        "runtime": {
+          "lib/net6.0/StackExchange.Redis.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.7.27.49176"
           }
         }
       },
@@ -941,6 +987,20 @@
       "path": "microsoft.entityframeworkcore.tools/9.0.0",
       "hashPath": "microsoft.entityframeworkcore.tools.9.0.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Caching.Abstractions/9.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PRv1SPyrgl/ullMF6eKDuEULRkTc10fVcnWvzFhqIMDA3m5f91znKH9ZNsKZBgu4xVc4ulNt7TEXyyt0rdlB3g==",
+      "path": "microsoft.extensions.caching.abstractions/9.0.11",
+      "hashPath": "microsoft.extensions.caching.abstractions.9.0.11.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Caching.StackExchangeRedis/9.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Y7SBVzuZb+nR9ide48yO0Jxo+Spc/FSaFuH+kgvQ8Cwag59TD6G5kUvnWogr/V+mdQhCIB35yeKm0mAUvbGipA==",
+      "path": "microsoft.extensions.caching.stackexchangeredis/9.0.11",
+      "hashPath": "microsoft.extensions.caching.stackexchangeredis.9.0.11.nupkg.sha512"
+    },
     "Microsoft.Extensions.Configuration.Abstractions/9.0.11": {
       "type": "package",
       "serviceable": true,
@@ -1066,6 +1126,20 @@
       "sha512": "sha512-ObngKFRLMBAeMqQzK7SC0Q6WZtWw0imPmEkVPo12yLVF3fioz2TN+w0mhNMJ5cVd/sLB2u+jei0bmA9sDMtkMw==",
       "path": "npgsql.entityframeworkcore.postgresql/9.0.0",
       "hashPath": "npgsql.entityframeworkcore.postgresql.9.0.0.nupkg.sha512"
+    },
+    "Pipelines.Sockets.Unofficial/2.2.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zG2FApP5zxSx6OcdJQLbZDk2AVlN2BNQD6MorwIfV6gVj0RRxWPEp2LXAxqDGZqeNV1Zp0BNPcNaey/GXmTdvQ==",
+      "path": "pipelines.sockets.unofficial/2.2.8",
+      "hashPath": "pipelines.sockets.unofficial.2.2.8.nupkg.sha512"
+    },
+    "StackExchange.Redis/2.7.27": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Uqc2OQHglqj9/FfGQ6RkKFkZfHySfZlfmbCl+hc+u2I/IqunfelQ7QJi7ZhvAJxUtu80pildVX6NPLdDaUffOw==",
+      "path": "stackexchange.redis/2.7.27",
+      "hashPath": "stackexchange.redis.2.7.27.nupkg.sha512"
     },
     "System.CodeDom/6.0.0": {
       "type": "package",

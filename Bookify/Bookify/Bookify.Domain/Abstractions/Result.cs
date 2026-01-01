@@ -1,9 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 
 namespace Bookify.Domain.Abstractions
 {
     public record Result
     {
+        [JsonConstructor]
         protected internal Result(bool isSuccess, Error error)
         {
             if(isSuccess && error != Error.NoError)
@@ -33,7 +35,7 @@ namespace Bookify.Domain.Abstractions
     public record Result<T> : Result
     {
         private readonly T? _value;
-
+        [JsonConstructor]
         protected internal Result(T? value, bool isSuccess, Error error)
             : base(isSuccess, error)
         {

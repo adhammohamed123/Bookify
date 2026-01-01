@@ -1,4 +1,6 @@
-﻿namespace Bookify.Domain.Shared
+﻿using System.Text.Json.Serialization;
+
+namespace Bookify.Domain.Shared
 {
     public record Currency
     {
@@ -7,7 +9,8 @@
         public static Currency EUR => new Currency("eur");
         public static Currency[] All => [USD, EUR]; 
         public string Code { get; private set; }
-
+        
+        [JsonConstructor]
         private Currency(string code)
         {
             Code = code;

@@ -58,3 +58,7 @@ F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bi
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.IdentityModel.Protocols.dll
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.IdentityModel.Logging.dll
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\StackExchange.Redis.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\Pipelines.Sockets.Unofficial.dll
