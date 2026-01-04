@@ -2,6 +2,9 @@ using Bookify.Api.Extentions;
 using Bookify.Api.Middlewares;
 using Bookify.Application;
 using Bookify.Infrastracture;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Npgsql;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
@@ -26,6 +29,8 @@ builder.Services.AddOpenTelemetry()
     .WithTracing(trace=>trace.AddAspNetCoreInstrumentation().AddHttpClientInstrumentation().AddNpgsql())
     .WithMetrics(metrics=>metrics.AddAspNetCoreInstrumentation().AddHttpClientInstrumentation().AddRuntimeInstrumentation())
     .UseOtlpExporter();
+
+builder.Services.AddHealthChecks();//.AddCheck<DBCustomHealthCheck>("Db_Check");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,5 +51,18 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapHealthChecks("health");
 app.Run();
+
+
+#region Custom Health Check Implementation
+//public class DBCustomHealthCheck(ApplicationDbContext dbContext) : IHealthCheck
+//{
+//    public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+//    {
+//        bool result = await dbContext.Database.CanConnectAsync();
+
+//        return result is true ? HealthCheckResult.Healthy(): HealthCheckResult.Unhealthy();
+//    }
+//} 
+#endregion
