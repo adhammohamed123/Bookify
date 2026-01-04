@@ -1,5 +1,16 @@
 name: dockercompose1823981227773156484
 services:
+  bookify-redis:
+    container_name: bookify.Redis.cache
+    image: redis:8.2
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 6379
+        published: "6379"
+        protocol: tcp
+    restart: always
   bookify.api:
     build:
       context: F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify
@@ -11,6 +22,10 @@ services:
         com.microsoft.created-by: visual-studio
         com.microsoft.visual-studio.project-name: Bookify.Api
       target: base
+    depends_on:
+      bookify.postgres:
+        condition: service_started
+        required: true
     entrypoint:
       - dotnet
       - --roll-forward
@@ -24,6 +39,8 @@ services:
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
       DOTNET_USE_POLLING_FILE_WATCHER: "1"
       NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://bookify.aspire-dashboard:18889
+      OTEL_EXPORTER_OTLP_PROTOCOL: grpc
     image: bookifyapi:dev
     labels:
       com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  "/app/bin/Debug/net9.0/Bookify.Api.dll"'
@@ -112,6 +129,17 @@ services:
         read_only: true
         bind:
           create_host_path: true
+  bookify.aspire-dashboard:
+    environment:
+      DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS: "true"
+    image: mcr.microsoft.com/dotnet/aspire-dashboard:9.3
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 18888
+        published: "18888"
+        protocol: tcp
   bookify.postgres:
     environment:
       POSTGRES_DB: bookifydb
@@ -123,7 +151,7 @@ services:
     ports:
       - mode: ingress
         target: 5432
-        published: "5432"
+        published: "15432"
         protocol: tcp
     volumes:
       - type: bind
