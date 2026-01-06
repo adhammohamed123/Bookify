@@ -82,6 +82,10 @@
             }
           },
           "centralPackageVersions": {
+            "AspNetCore.HealthChecks.NpgSql": "9.0.0",
+            "AspNetCore.HealthChecks.Redis": "9.0.0",
+            "AspNetCore.HealthChecks.UI.Client": "9.0.0",
+            "AspNetCore.HealthChecks.Uris": "9.0.0",
             "AutoMapper": "14.0.0",
             "Bogus": "35.6.5",
             "EFCore.NamingConventions": "9.0.0",
@@ -106,6 +110,7 @@
             "OpenTelemetry.Instrumentation.AspNetCore": "1.14.0",
             "OpenTelemetry.Instrumentation.Http": "1.14.0",
             "OpenTelemetry.Instrumentation.Runtime": "1.14.0",
+            "OpenTelemetry.Instrumentation.StackExchangeRedis": "1.14.0-beta.1",
             "SonarAnalyzer.CSharp": "10.16.1.129956",
             "Swashbuckle.AspNetCore.SwaggerUI": "9.0.0"
           },
@@ -183,6 +188,10 @@
             }
           },
           "centralPackageVersions": {
+            "AspNetCore.HealthChecks.NpgSql": "9.0.0",
+            "AspNetCore.HealthChecks.Redis": "9.0.0",
+            "AspNetCore.HealthChecks.UI.Client": "9.0.0",
+            "AspNetCore.HealthChecks.Uris": "9.0.0",
             "AutoMapper": "14.0.0",
             "Bogus": "35.6.5",
             "EFCore.NamingConventions": "9.0.0",
@@ -207,6 +216,7 @@
             "OpenTelemetry.Instrumentation.AspNetCore": "1.14.0",
             "OpenTelemetry.Instrumentation.Http": "1.14.0",
             "OpenTelemetry.Instrumentation.Runtime": "1.14.0",
+            "OpenTelemetry.Instrumentation.StackExchangeRedis": "1.14.0-beta.1",
             "SonarAnalyzer.CSharp": "10.16.1.129956",
             "Swashbuckle.AspNetCore.SwaggerUI": "9.0.0"
           },
@@ -281,6 +291,21 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "AspNetCore.HealthChecks.NpgSql": {
+              "target": "Package",
+              "version": "[9.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "AspNetCore.HealthChecks.Redis": {
+              "target": "Package",
+              "version": "[9.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "AspNetCore.HealthChecks.Uris": {
+              "target": "Package",
+              "version": "[9.0.0, )",
+              "versionCentrallyManaged": true
+            },
             "Bogus": {
               "target": "Package",
               "version": "[35.6.5, )",
@@ -327,9 +352,18 @@
               "target": "Package",
               "version": "[9.0.0, )",
               "versionCentrallyManaged": true
+            },
+            "OpenTelemetry.Instrumentation.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[1.14.0-beta.1, )",
+              "versionCentrallyManaged": true
             }
           },
           "centralPackageVersions": {
+            "AspNetCore.HealthChecks.NpgSql": "9.0.0",
+            "AspNetCore.HealthChecks.Redis": "9.0.0",
+            "AspNetCore.HealthChecks.UI.Client": "9.0.0",
+            "AspNetCore.HealthChecks.Uris": "9.0.0",
             "AutoMapper": "14.0.0",
             "Bogus": "35.6.5",
             "EFCore.NamingConventions": "9.0.0",
@@ -354,6 +388,7 @@
             "OpenTelemetry.Instrumentation.AspNetCore": "1.14.0",
             "OpenTelemetry.Instrumentation.Http": "1.14.0",
             "OpenTelemetry.Instrumentation.Runtime": "1.14.0",
+            "OpenTelemetry.Instrumentation.StackExchangeRedis": "1.14.0-beta.1",
             "SonarAnalyzer.CSharp": "10.16.1.129956",
             "Swashbuckle.AspNetCore.SwaggerUI": "9.0.0"
           },

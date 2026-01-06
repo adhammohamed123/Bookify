@@ -2,6 +2,7 @@ using Bookify.Api.Extentions;
 using Bookify.Api.Middlewares;
 using Bookify.Application;
 using Bookify.Infrastracture;
+using HealthChecks.UI.Client;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -10,6 +11,7 @@ using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using StackExchange.Redis;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,11 +28,11 @@ builder.Services
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(c=>c.AddService("Bookfiy"))
-    .WithTracing(trace=>trace.AddAspNetCoreInstrumentation().AddHttpClientInstrumentation().AddNpgsql())
+    .WithTracing(trace=>trace.AddAspNetCoreInstrumentation().AddHttpClientInstrumentation().AddNpgsql().AddRedisInstrumentation())
     .WithMetrics(metrics=>metrics.AddAspNetCoreInstrumentation().AddHttpClientInstrumentation().AddRuntimeInstrumentation())
     .UseOtlpExporter();
 
-builder.Services.AddHealthChecks();//.AddCheck<DBCustomHealthCheck>("Db_Check");
+//builder.Services.AddHealthChecks();//.AddCheck<DBCustomHealthCheck>("Db_Check");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,7 +53,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHealthChecks("health");
+app.MapHealthChecks("health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 app.Run();
 
 

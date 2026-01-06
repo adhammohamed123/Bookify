@@ -62,3 +62,9 @@ F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bi
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\obj\Debug\docker-c.35A3FFBA.Up2Date
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\HealthChecks.UI.Client.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\HealthChecks.UI.Core.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\HealthChecks.NpgSql.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\HealthChecks.Redis.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\HealthChecks.Uris.dll
+F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify\bin\Debug\OpenTelemetry.Instrumentation.StackExchangeRedis.dll
