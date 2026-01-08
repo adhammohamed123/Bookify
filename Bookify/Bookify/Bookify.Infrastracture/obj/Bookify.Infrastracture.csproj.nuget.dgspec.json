@@ -103,6 +103,7 @@
             "Microsoft.Extensions.Logging.Abstractions": "9.0.11",
             "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.11",
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.23.0",
+            "Newtonsoft.Json": "13.0.4",
             "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.0",
             "Npgsql.OpenTelemetry": "9.0.0",
             "OpenTelemetry.Exporter.OpenTelemetryProtocol": "1.14.0",
@@ -111,6 +112,7 @@
             "OpenTelemetry.Instrumentation.Http": "1.14.0",
             "OpenTelemetry.Instrumentation.Runtime": "1.14.0",
             "OpenTelemetry.Instrumentation.StackExchangeRedis": "1.14.0-beta.1",
+            "Quartz.Extensions.Hosting": "3.15.1",
             "SonarAnalyzer.CSharp": "10.16.1.129956",
             "Swashbuckle.AspNetCore.SwaggerUI": "9.0.0"
           },
@@ -209,6 +211,7 @@
             "Microsoft.Extensions.Logging.Abstractions": "9.0.11",
             "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.11",
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.23.0",
+            "Newtonsoft.Json": "13.0.4",
             "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.0",
             "Npgsql.OpenTelemetry": "9.0.0",
             "OpenTelemetry.Exporter.OpenTelemetryProtocol": "1.14.0",
@@ -217,6 +220,7 @@
             "OpenTelemetry.Instrumentation.Http": "1.14.0",
             "OpenTelemetry.Instrumentation.Runtime": "1.14.0",
             "OpenTelemetry.Instrumentation.StackExchangeRedis": "1.14.0-beta.1",
+            "Quartz.Extensions.Hosting": "3.15.1",
             "SonarAnalyzer.CSharp": "10.16.1.129956",
             "Swashbuckle.AspNetCore.SwaggerUI": "9.0.0"
           },
@@ -348,6 +352,11 @@
               "version": "[9.0.11, )",
               "versionCentrallyManaged": true
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.4, )",
+              "versionCentrallyManaged": true
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.0, )",
@@ -356,6 +365,11 @@
             "OpenTelemetry.Instrumentation.StackExchangeRedis": {
               "target": "Package",
               "version": "[1.14.0-beta.1, )",
+              "versionCentrallyManaged": true
+            },
+            "Quartz.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[3.15.1, )",
               "versionCentrallyManaged": true
             }
           },
@@ -381,6 +395,7 @@
             "Microsoft.Extensions.Logging.Abstractions": "9.0.11",
             "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.11",
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.23.0",
+            "Newtonsoft.Json": "13.0.4",
             "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.0",
             "Npgsql.OpenTelemetry": "9.0.0",
             "OpenTelemetry.Exporter.OpenTelemetryProtocol": "1.14.0",
@@ -389,6 +404,7 @@
             "OpenTelemetry.Instrumentation.Http": "1.14.0",
             "OpenTelemetry.Instrumentation.Runtime": "1.14.0",
             "OpenTelemetry.Instrumentation.StackExchangeRedis": "1.14.0-beta.1",
+            "Quartz.Extensions.Hosting": "3.15.1",
             "SonarAnalyzer.CSharp": "10.16.1.129956",
             "Swashbuckle.AspNetCore.SwaggerUI": "9.0.0"
           },
