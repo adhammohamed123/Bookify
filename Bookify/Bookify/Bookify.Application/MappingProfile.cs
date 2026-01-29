@@ -2,8 +2,10 @@
 using Bookify.Application.Apartment.AddApartment;
 using Bookify.Application.Apartment.Dtos;
 using Bookify.Application.Booking.Dtos;
+using Bookify.Application.Review.Dtos;
 using Bookify.Domain.Apartment;
 using Bookify.Domain.Booking;
+using Bookify.Domain.Review;
 using Bookify.Domain.Shared;
 
 namespace Bookify.Application
@@ -29,6 +31,9 @@ namespace Bookify.Application
                 .ForMember(d => d.Price, r => r.MapFrom(s => new Money(s.PriceAmount, Currency.FromCode(s.PriceCurrency))))
                 .ForMember(d => d.CleanningFee, r => r.MapFrom(s => new Money(s.CleanningFeeAmount, Currency.FromCode(s.CleanningFeeCurrency))));
 
+            CreateMap<ReviewModel, ReviewDto>()
+                .ForMember(d=>d.Comment,d=>d.MapFrom(s=>s.Comment.value))
+                .ForMember(d => d.Rating, d => d.MapFrom(s => s.Rating.Value));
 
 
 

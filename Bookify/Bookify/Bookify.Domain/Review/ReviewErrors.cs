@@ -7,5 +7,9 @@ namespace Bookify.Domain.Review
         public static Error BookingNotCompleted => new(
             "Review.BookingNotCompleted",
             "Cannot create a review for a booking that is not completed.");
+
+        public static Error NotFound=> new(
+            "Review.NotFound",
+            "The specified review was not found.");
     }
 }

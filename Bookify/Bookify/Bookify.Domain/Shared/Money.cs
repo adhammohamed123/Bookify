@@ -9,8 +9,8 @@
                 throw new InvalidOperationException("Cannot add money with different currencies");
             return new Money(a.Amount + b.Amount, a.Currency);
         }
-        public static Money Zero()=>new Money(0, Currency.None);
-        public static Money Zero(Currency currency) => new Money(0, currency);
+       // public static Money Zero()=>new Money(0, Currency.None);
+        public static Money Zero(Currency currency) => new(0, currency);
         public  bool IsZero(Currency currency) =>this == Zero(currency);
     }
 
