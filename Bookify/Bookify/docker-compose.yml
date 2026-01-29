@@ -30,4 +30,11 @@ services:
       - "18888:18888" 
     environment:
       - DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true
+  
+  bookify-redis:
+    image: redis:8.2
+    container_name: bookify.Redis.cache
+    restart: always
+    ports:
+      - 6379:6379 
 

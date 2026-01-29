@@ -3,5 +3,8 @@
       <PackageReference Include="MediatR.Contracts" />
 		
 	</ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="Bookify.Domain.UnitTest"/>
+	</ItemGroup>
 
 </Project>

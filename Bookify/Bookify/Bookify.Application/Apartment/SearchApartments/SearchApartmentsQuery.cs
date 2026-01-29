@@ -8,8 +8,13 @@ using Bookify.Domain.Booking;
 
 namespace Bookify.Application.Apartment.SearchApartments
 {
-     public record SearchApartmentsQuery(DateOnly Start,DateOnly End):IQuery<IReadOnlyList<ApartmentDto>>;
-   
+    public record SearchApartmentsQuery(DateOnly Start, DateOnly End) : ICachedQuery<IReadOnlyList<ApartmentDto>>
+    {
+        public string CacheKey => $"Apartments:Search:Start{Start}_End{End}";
+
+        public TimeSpan? Expiration => TimeSpan.FromMinutes(5);
+    }
+
     internal sealed class SearchApartmentsHandler(IRepositoryManager repositoryManager,IMapper mapper,IDateTimeProvider dateTimeProvider)
         : IQueryHandler<SearchApartmentsQuery, IReadOnlyList<ApartmentDto>>
     {

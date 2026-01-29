@@ -12,16 +12,17 @@ using System.Windows.Input;
 
 namespace Bookify.Application.Apartment.AddApartment
 {
-    public record AddApartmentCommad(
-         string Name,
-         string Description,
-         string State, 
-         string City, 
-         string Street, 
-         string ZipCode, 
-         string Country,
-         Money Price,
-         Money CleanningFee,
-         ICollection<Amenity> Amenities
-   ):ICommand<ApartmentDto>;
+    public record AddApartmentCommad : ICommand<ApartmentDto>
+    {
+         public required string Name { get; init; }
+         public required string Description { get; init; }
+         public required string State { get; init; }
+         public required string City {  get; init; }
+         public required string Street {  get; init; }
+         public required string ZipCode {  get; init; }
+         public required string Country {  get; init; }
+         public required Money Price { get; init; }
+         public required Money CleanningFee {  get; init; }
+         public required ICollection<Amenity> Amenities {  get; init; }
+    }
 }

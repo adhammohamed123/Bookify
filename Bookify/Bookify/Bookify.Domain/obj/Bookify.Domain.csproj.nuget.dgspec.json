@@ -58,6 +58,10 @@
             }
           },
           "centralPackageVersions": {
+            "AspNetCore.HealthChecks.NpgSql": "9.0.0",
+            "AspNetCore.HealthChecks.Redis": "9.0.0",
+            "AspNetCore.HealthChecks.UI.Client": "9.0.0",
+            "AspNetCore.HealthChecks.Uris": "9.0.0",
             "AutoMapper": "14.0.0",
             "Bogus": "35.6.5",
             "EFCore.NamingConventions": "9.0.0",
@@ -69,11 +73,13 @@
             "Microsoft.AspNetCore.OpenApi": "9.0.11",
             "Microsoft.EntityFrameworkCore.Design": "9.0.0",
             "Microsoft.EntityFrameworkCore.Tools": "9.0.0",
+            "Microsoft.Extensions.Caching.StackExchangeRedis": "9.0.11",
             "Microsoft.Extensions.Configuration.Abstractions": "9.0.11",
             "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.11",
             "Microsoft.Extensions.Logging.Abstractions": "9.0.11",
             "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.11",
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.23.0",
+            "Newtonsoft.Json": "13.0.4",
             "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.0",
             "Npgsql.OpenTelemetry": "9.0.0",
             "OpenTelemetry.Exporter.OpenTelemetryProtocol": "1.14.0",
@@ -81,6 +87,8 @@
             "OpenTelemetry.Instrumentation.AspNetCore": "1.14.0",
             "OpenTelemetry.Instrumentation.Http": "1.14.0",
             "OpenTelemetry.Instrumentation.Runtime": "1.14.0",
+            "OpenTelemetry.Instrumentation.StackExchangeRedis": "1.14.0-beta.1",
+            "Quartz.Extensions.Hosting": "3.15.1",
             "SonarAnalyzer.CSharp": "10.16.1.129956",
             "Swashbuckle.AspNetCore.SwaggerUI": "9.0.0"
           },
@@ -95,12 +103,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.12, 9.0.12]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.12, 9.0.12]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.12, 9.0.12]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

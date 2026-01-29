@@ -1,20 +1,49 @@
 name: dockercompose1823981227773156484
 services:
+  bookify-redis:
+    container_name: bookify.Redis.cache
+    image: redis:8.2
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 6379
+        published: "6379"
+        protocol: tcp
+    restart: always
   bookify.api:
     build:
       context: F:\GitHub\Bookify project clean arch & DDD for Github\Bookify\Bookify\Bookify
       dockerfile: Bookify.Api/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Bookify.Api
     depends_on:
       bookify.postgres:
         condition: service_started
         required: true
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_HTTP_PORTS: "8080"
       ASPNETCORE_HTTPS_PORTS: "8081"
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://devhabits.Aspire-dashboard:18889
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://bookify.aspire-dashboard:18889
       OTEL_EXPORTER_OTLP_PROTOCOL: grpc
     image: bookifyapi
+    labels:
+      com.microsoft.visual-studio.project-name: Bookify.Api
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  "/app/Bookify.Api.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
     networks:
       default: null
     ports:
@@ -32,28 +61,46 @@ services:
       - mode: ingress
         target: 8081
         protocol: tcp
+    tty: true
     volumes:
       - type: bind
-        source: C:\Users\ElDoma\AppData\Roaming/Microsoft/UserSecrets
+        source: C:\Users\ElDoma\AppData\Roaming\Microsoft\UserSecrets
         target: /home/app/.microsoft/usersecrets
         read_only: true
         bind:
           create_host_path: true
       - type: bind
-        source: C:\Users\ElDoma\AppData\Roaming/Microsoft/UserSecrets
+        source: C:\Users\ElDoma\AppData\Roaming\Microsoft\UserSecrets
         target: /root/.microsoft/usersecrets
         read_only: true
         bind:
           create_host_path: true
       - type: bind
-        source: C:\Users\ElDoma\AppData\Roaming/ASP.NET/Https
+        source: C:\Users\ElDoma\AppData\Roaming\ASP.NET\Https
         target: /home/app/.aspnet/https
         read_only: true
         bind:
           create_host_path: true
       - type: bind
-        source: C:\Users\ElDoma\AppData\Roaming/ASP.NET/Https
+        source: C:\Users\ElDoma\AppData\Roaming\ASP.NET\Https
         target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\ElDoma\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\extensions\Microsoft\managedprojectsystem\HotReload
+        target: /HotReloadAgent
         read_only: true
         bind:
           create_host_path: true
@@ -79,7 +126,7 @@ services:
     ports:
       - mode: ingress
         target: 5432
-        published: "5432"
+        published: "15432"
         protocol: tcp
     volumes:
       - type: bind

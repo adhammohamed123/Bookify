@@ -10,7 +10,10 @@
     <Project Path="Bookify.Domain/Bookify.Domain.csproj" />
     <Project Path="Bookify.Infrastracture/Bookify.Infrastracture.csproj" Id="c33ae658-e4e3-4de9-a7f8-dd1068ba8098" />
   </Folder>
-  <Folder Name="/tests/" />
+  <Folder Name="/tests/">
+    <Project Path="../Bookify.Application.UnitTest/Bookify.Application.UnitTest.csproj" Id="dce2da72-48c2-4633-b681-680baa7cbb91" />
+    <Project Path="../Bookify.Domain.UnitTest/Bookify.Domain.UnitTest.csproj" Id="bd506c08-f0f1-4186-8716-229e7cbd2d68" />
+  </Folder>
   <Project Path="docker-compose.dcproj">
     <Build />
   </Project>

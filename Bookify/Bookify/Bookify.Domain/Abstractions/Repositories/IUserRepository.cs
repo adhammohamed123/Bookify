@@ -24,6 +24,8 @@ namespace Bookify.Domain.Abstractions.Repositories
     {
         Task<ReviewModel?> GetReviewAsync(Guid reviewId, bool trackChanges);
         IQueryable<ReviewModel> GetReviewsAsync(bool trackChanges);
+
+        Task AddReviewAsync(ReviewModel review);
     }
     public interface IBookingRepository
     {
