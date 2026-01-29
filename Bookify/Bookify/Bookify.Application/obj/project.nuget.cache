@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yMeIp00hcRA=",
+  "dgSpecHash": "cDHQVWyM7JM=",
   "success": true,
   "projectFilePath": "F:\\GitHub\\Bookify project clean arch & DDD for Github\\Bookify\\Bookify\\Bookify\\Bookify.Application\\Bookify.Application.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,10 @@
     "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.11\\microsoft.extensions.dependencyinjection.abstractions.9.0.11.nupkg.sha512",
     "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.11\\microsoft.extensions.logging.abstractions.9.0.11.nupkg.sha512",
     "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
-    "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+    "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.12\\microsoft.windowsdesktop.app.ref.9.0.12.nupkg.sha512",
+    "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.12\\microsoft.netcore.app.ref.9.0.12.nupkg.sha512",
+    "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.12\\microsoft.aspnetcore.app.ref.9.0.12.nupkg.sha512"
   ],
   "logs": []
 }

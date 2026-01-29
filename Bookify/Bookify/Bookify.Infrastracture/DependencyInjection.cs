@@ -54,7 +54,7 @@ namespace Bookify.Infrastracture
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.Authority = keyclockOptions!.Issuer;
+                    options.Authority = keyclockOptions!.Issure;
                     options.Audience = keyclockOptions.Audience;
                     options.MetadataAddress = keyclockOptions?.MetadataAddress!;
                     options.RequireHttpsMetadata = keyclockOptions!.RequireHttpsMetadata;
@@ -64,7 +64,7 @@ namespace Bookify.Infrastracture
                         ValidateIssuer = true,
                         ValidateLifetime = true,
                         ValidAudience = keyclockOptions.Audience,
-                        ValidIssuer = keyclockOptions.Issuer,
+                        ValidIssuer = keyclockOptions.Issure,
                         NameClaimType = "preferred_username"
                     };
                 });

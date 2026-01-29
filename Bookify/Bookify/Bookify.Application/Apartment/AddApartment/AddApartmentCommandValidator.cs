@@ -5,7 +5,7 @@ namespace Bookify.Application.Apartment.AddApartment
 {
     internal sealed class AddApartmentCommandValidator:AbstractValidator<AddApartmentCommad>
     {
-        IEnumerable<Currency> allowedCurrencies => Currency.All;
+       static IEnumerable<Currency> AllowedCurrencies => Currency.All;
        
         public AddApartmentCommandValidator()
         {
@@ -17,9 +17,9 @@ namespace Bookify.Application.Apartment.AddApartment
             RuleFor(x => x.ZipCode).NotEmpty().WithMessage("ZipCode is required.");
             RuleFor(x => x.Country).NotEmpty().WithMessage("Country is required.");
             RuleFor(x=>x.Price.Amount).GreaterThan(0).WithMessage("Price must be greater than zero.");
-            RuleFor(x => x.Price.Currency).Must(c=> allowedCurrencies.Contains(c)).WithMessage($"Price currency is not supported,allowed Currencies {string.Join(",",allowedCurrencies)}");
+            RuleFor(x => x.Price.Currency).Must(c=> AllowedCurrencies.Contains(c)).WithMessage($"Price currency is not supported,allowed Currencies {string.Join(",",AllowedCurrencies)}");
             RuleFor(x => x.CleanningFee.Amount).GreaterThanOrEqualTo(0).WithMessage("Cleanning fee must be greater than or equal to zero.");
-            RuleFor(x => x.CleanningFee.Currency).Must(c => allowedCurrencies.Contains(c)).WithMessage($"CleanningFee currency is not supported,allowed Currencies {string.Join(",", allowedCurrencies)}");
+            RuleFor(x => x.CleanningFee.Currency).Must(c => AllowedCurrencies.Contains(c)).WithMessage($"CleanningFee currency is not supported,allowed Currencies {string.Join(",", AllowedCurrencies)}");
             RuleFor(x => x.Amenities).NotEmpty().WithMessage("At least one amenity is required.");
         }
     }

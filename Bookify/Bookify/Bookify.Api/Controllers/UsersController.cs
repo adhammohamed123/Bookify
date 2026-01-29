@@ -23,7 +23,7 @@ public class UsersController(ISender sender) : ControllerBase
     {
         var user = UserInToken.Get(User);
         var command = new CreateUserCommand(user.Id,user.FirestName,user.LastName,user.Email);
-        var result=  await  sender.Send(command);
+        var result=  await sender.Send(command);
         return Created();
     }
    

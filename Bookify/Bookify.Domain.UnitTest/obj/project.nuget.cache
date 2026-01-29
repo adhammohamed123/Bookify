@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "s0TxfXn1U3c=",
+  "dgSpecHash": "8f7YeGZiOn0=",
   "success": true,
   "projectFilePath": "F:\\GitHub\\Bookify project clean arch & DDD for Github\\Bookify\\Bookify\\Bookify.Domain.UnitTest\\Bookify.Domain.UnitTest.csproj",
   "expectedPackageFiles": [
@@ -20,7 +20,10 @@
     "C:\\Users\\ElDoma\\.nuget\\packages\\xunit.core\\2.9.2\\xunit.core.2.9.2.nupkg.sha512",
     "C:\\Users\\ElDoma\\.nuget\\packages\\xunit.extensibility.core\\2.9.2\\xunit.extensibility.core.2.9.2.nupkg.sha512",
     "C:\\Users\\ElDoma\\.nuget\\packages\\xunit.extensibility.execution\\2.9.2\\xunit.extensibility.execution.2.9.2.nupkg.sha512",
-    "C:\\Users\\ElDoma\\.nuget\\packages\\xunit.runner.visualstudio\\2.8.2\\xunit.runner.visualstudio.2.8.2.nupkg.sha512"
+    "C:\\Users\\ElDoma\\.nuget\\packages\\xunit.runner.visualstudio\\2.8.2\\xunit.runner.visualstudio.2.8.2.nupkg.sha512",
+    "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.12\\microsoft.windowsdesktop.app.ref.9.0.12.nupkg.sha512",
+    "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.12\\microsoft.netcore.app.ref.9.0.12.nupkg.sha512",
+    "C:\\Users\\ElDoma\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.12\\microsoft.aspnetcore.app.ref.9.0.12.nupkg.sha512"
   ],
   "logs": []
 }
